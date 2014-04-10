@@ -1,0 +1,5 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="97BD3728-5011-DC8D-D4C3-1EE823E8A3ED" name="Items" seqName="seg_0"/>
+   <object objectType="Table" objectID="DBF8D2AC-A519-D7E9-D768-C7ADD4AF76E3" name="Joueurs" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

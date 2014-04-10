@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DBF8D2AC-A519-D7E9-D768-C7ADD4AF76E3" name="Joueurs">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-10 12:57:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Id" id="50AEDC09-A1AD-A58A-6B20-D14AA0B6EAAD">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NomJoueur" id="576B3263-57A6-A88B-A183-58E5354D7426">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Prenom" id="F46B106B-9C55-EA84-32A8-EA30563DA24C">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EcusJoueurs" id="C3A2AF1A-7D5B-91B0-2EF5-CA3F910E60D0">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="93F35C6A-10DB-820D-FB2C-0644EED0FB1A" name="Joueurs_PK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50AEDC09-A1AD-A58A-6B20-D14AA0B6EAAD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
