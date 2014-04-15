@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BAA2A330-05AA-AE9A-0EBD-701A05747DEC" name="Ressources">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:19 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdItem" id="07709250-D3F3-7C2C-78F5-5697C8854847">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:48 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D6C3D6BA-A4EE-1C74-91B6-312C1BAE1FA9" referredColumn="645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6"/>
+</associations>
+</Column>
+<Column name="Description" id="CDE6DD17-E584-315F-6D97-A6FC99242FCF">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:12:35 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="431F62C9-2C35-E3CA-C5CF-A70A0A9315C6" name="Ressources_PK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:48 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07709250-D3F3-7C2C-78F5-5697C8854847"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2519C0A0-526F-DDD3-B31B-09C2674AA68F" name="TABLE_8_Items_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:48 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07709250-D3F3-7C2C-78F5-5697C8854847"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

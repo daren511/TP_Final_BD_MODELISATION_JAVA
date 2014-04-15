@@ -1,5 +1,21 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="2B2F638C-B09F-BCC6-9680-05B1DB1CF0EE" name="Armes" seqName="seg_0"/>
+   <object objectType="Table" objectID="9893B7E6-5E72-C3F9-E212-7A9E009C7132" name="Armure" seqName="seg_0"/>
+   <object objectType="Table" objectID="FBD6F9FD-2949-7CA9-AA9E-55E90E05EB85" name="Habilites" seqName="seg_0"/>
+   <object objectType="Table" objectID="0046BD0B-18F0-8488-6B48-9D3C10FC2DB7" name="Inventaire" seqName="seg_0"/>
    <object objectType="Table" objectID="97BD3728-5011-DC8D-D4C3-1EE823E8A3ED" name="Items" seqName="seg_0"/>
    <object objectType="Table" objectID="DBF8D2AC-A519-D7E9-D768-C7ADD4AF76E3" name="Joueurs" seqName="seg_0"/>
+   <object objectType="Table" objectID="4495AEF3-4593-A26E-484B-DB8D998EDD27" name="Panier" seqName="seg_0"/>
+   <object objectType="Table" objectID="562D3B8E-B79D-A1BA-C8D3-BCDDA2E97F21" name="Potions" seqName="seg_0"/>
+   <object objectType="Table" objectID="BAA2A330-05AA-AE9A-0EBD-701A05747DEC" name="Ressources" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="D9E6F134-9560-4A34-A240-DD52C0950460" name="Armes_Items_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="3647577C-EBDC-98A9-DBEA-C2D5194020A5" name="Armure_Items_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="5FABE93C-CA07-0BCB-4B8A-14C800D205F5" name="Inventaire_Items_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="8BF5CE04-CEDE-5799-8EEE-7C0B3B173A28" name="Inventaire_Joueurs_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="4A422071-F796-6679-D918-36AD6F6FCFB7" name="Panier_Items_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="25E9924F-F0DB-9008-EE0A-FE6DBDCB3BF3" name="Panier_Joueurs_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="35C3BD12-6023-40D3-00B8-7B21A20C1E8E" name="Potions_Items_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="8089580C-9266-AC92-FD80-B3D11DE02885" name="TABLE_7_Items_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="D6C3D6BA-A4EE-1C74-91B6-312C1BAE1FA9" name="TABLE_8_Items_FK" seqName="seg_0"/>
 </oracle.dbtools.crest.model.design.relational.RelationalDesign>

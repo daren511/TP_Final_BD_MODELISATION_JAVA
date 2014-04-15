@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3647577C-EBDC-98A9-DBEA-C2D5194020A5" name="Armure_Items_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 12:51:40 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<containerWithKeyObject>9893B7E6-5E72-C3F9-E212-7A9E009C7132</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>417F42D4-02A7-092E-454D-3008523E7F7D</localFKIndex>
+<keyObject>C27DF6FA-0FC8-DB09-102C-F453FDB3DE19</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

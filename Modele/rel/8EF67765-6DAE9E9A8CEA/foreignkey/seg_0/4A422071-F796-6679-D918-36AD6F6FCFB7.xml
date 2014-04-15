@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="4A422071-F796-6679-D918-36AD6F6FCFB7" name="Panier_Items_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:21:33 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<containerWithKeyObject>4495AEF3-4593-A26E-484B-DB8D998EDD27</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>7FB4E22A-3B04-E0AF-158C-0176C3439EF8</localFKIndex>
+<keyObject>C27DF6FA-0FC8-DB09-102C-F453FDB3DE19</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

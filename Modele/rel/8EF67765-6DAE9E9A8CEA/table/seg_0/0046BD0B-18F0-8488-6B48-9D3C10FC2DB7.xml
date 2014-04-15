@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0046BD0B-18F0-8488-6B48-9D3C10FC2DB7" name="Inventaire">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:24:36 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdJoueur" id="10625EEB-69E9-12C8-18B1-74418490C37E">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:25:22 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>50AEDC09-A1AD-A58A-6B20-D14AA0B6EAAD</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8BF5CE04-CEDE-5799-8EEE-7C0B3B173A28" referredColumn="50AEDC09-A1AD-A58A-6B20-D14AA0B6EAAD"/>
+</associations>
+</Column>
+<Column name="IdItem" id="37E93305-45EA-6A7B-2F57-A95924EAB725">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:25:22 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5FABE93C-CA07-0BCB-4B8A-14C800D205F5" referredColumn="645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6"/>
+</associations>
+</Column>
+<Column name="Quantite" id="D681A356-94C7-095A-9A46-7D1545C599B1">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:25:22 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0D36050D-2EE0-6DAC-CBC6-4EA39BBBCA56" name="Inventaire_PK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:25:22 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10625EEB-69E9-12C8-18B1-74418490C37E"/>
+<colUsage columnID="37E93305-45EA-6A7B-2F57-A95924EAB725"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="868FE97E-5C28-1E38-6852-AC42096D0DEA" name="Inventaire_Joueurs_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:26:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10625EEB-69E9-12C8-18B1-74418490C37E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="67D8FE29-3900-84C0-87AA-A45CDCF5E346" name="Inventaire_Items_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:26:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="37E93305-45EA-6A7B-2F57-A95924EAB725"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

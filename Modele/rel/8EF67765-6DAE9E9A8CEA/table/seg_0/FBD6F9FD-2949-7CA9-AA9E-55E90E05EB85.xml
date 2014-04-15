@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FBD6F9FD-2949-7CA9-AA9E-55E90E05EB85" name="Habilites">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:05:41 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdItem" id="ABE101C1-158F-9EC3-D71D-DEBFB773A822">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:15 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8089580C-9266-AC92-FD80-B3D11DE02885" referredColumn="645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6"/>
+</associations>
+</Column>
+<Column name="Description" id="1F75EAA0-A2DF-95F4-88AB-1BD261888CBA">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:12:55 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="555122B2-44E4-8F5C-E7CA-0658F26E4D4F" name="Habilites_PK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:15 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABE101C1-158F-9EC3-D71D-DEBFB773A822"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="380B3FEE-772B-2F69-EFC5-BE90541F9CB2" name="TABLE_7_Items_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 13:06:15 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABE101C1-158F-9EC3-D71D-DEBFB773A822"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,15 +1,40 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DBF8D2AC-A519-D7E9-D768-C7ADD4AF76E3" name="Joueurs">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9893B7E6-5E72-C3F9-E212-7A9E009C7132" name="Armure">
 <createdBy>201093812</createdBy>
-<createdTime>2014-04-10 12:57:27 UTC</createdTime>
+<createdTime>2014-04-15 12:48:22 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="IdJoueur" id="50AEDC09-A1AD-A58A-6B20-D14AA0B6EAAD">
+<Column name="IdItem" id="84EE5230-22AD-4C66-957B-E7875B72429D">
 <createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<createdTime>2014-04-15 12:49:16 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3647577C-EBDC-98A9-DBEA-C2D5194020A5" referredColumn="645FB2EB-9EA4-78BD-A826-EC0EDC4A30E6"/>
+</associations>
+</Column>
+<Column name="Matiere" id="EA6DCE72-A0B4-9B43-62A1-26F207F1B2C7">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 12:58:49 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Poids" id="715C048C-0528-26CA-BF22-888B4147F843">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 12:59:22 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -17,87 +42,51 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Alias" id="05EC95BA-A760-1E61-E825-80C5051FB0A6">
+<Column name="Taille" id="D3FB33F9-6964-5588-70B7-65FBF115D706">
 <createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:09:02 UTC</createdTime>
+<createdTime>2014-04-15 12:59:22 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>40</dataTypeSize>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="NomJoueur" id="576B3263-57A6-A88B-A183-58E5354D7426">
-<createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:02:35 UTC</createdTime>
-<generatorID>Généré par l&apos;utilisateur</generatorID>
-<ownerDesignName>Modele</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>40</dataTypeSize>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Prenom" id="F46B106B-9C55-EA84-32A8-EA30563DA24C">
-<createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:02:35 UTC</createdTime>
-<generatorID>Généré par l&apos;utilisateur</generatorID>
-<ownerDesignName>Modele</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>40</dataTypeSize>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="EcusJoueurs" id="C3A2AF1A-7D5B-91B0-2EF5-CA3F910E60D0">
-<createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:02:35 UTC</createdTime>
-<comment>Check &gt;=0</comment>
-<commentInRDBMS>Check &gt;=0</commentInRDBMS>
-<generatorID>Généré par l&apos;utilisateur</generatorID>
-<notes>Check &gt;=0</notes>
-<ownerDesignName>Modele</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>2</dataTypePrecision>
-<dataTypeScale>0</dataTypeScale>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Password" id="B1E540F3-FA6C-990B-F4E3-92923F1548FE">
+<Column name="Efficacite" id="D3C063E4-ADCD-2D3E-5AED-B8E1F33E2ED0">
 <createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:10:22 UTC</createdTime>
+<createdTime>2014-04-15 13:00:27 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="93F35C6A-10DB-820D-FB2C-0644EED0FB1A" name="Joueurs_PK">
+<ind_PK_UK id="99B1A711-5604-B9BB-CE96-774A5C4F9AF5" name="Armure_PK">
 <createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:02:35 UTC</createdTime>
+<createdTime>2014-04-15 12:49:16 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="50AEDC09-A1AD-A58A-6B20-D14AA0B6EAAD"/>
+<colUsage columnID="84EE5230-22AD-4C66-957B-E7875B72429D"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="317D0DF4-4EE5-DA39-5DFC-FB6E764322C3" name="Joueurs__UN">
+<ind_PK_UK id="417F42D4-02A7-092E-454D-3008523E7F7D" name="Armure_Items_FK">
 <createdBy>201093812</createdBy>
-<createdTime>2014-04-10 13:09:26 UTC</createdTime>
+<createdTime>2014-04-15 12:51:40 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
-<indexState>Unique Constraint</indexState>
+<indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="05EC95BA-A760-1E61-E825-80C5051FB0A6"/>
+<colUsage columnID="84EE5230-22AD-4C66-957B-E7875B72429D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

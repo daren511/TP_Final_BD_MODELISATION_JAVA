@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="35C3BD12-6023-40D3-00B8-7B21A20C1E8E" name="Potions_Items_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-15 12:52:33 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<containerWithKeyObject>562D3B8E-B79D-A1BA-C8D3-BCDDA2E97F21</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>7ABD540E-4ADF-31F9-E35F-5A858C36E968</localFKIndex>
+<keyObject>C27DF6FA-0FC8-DB09-102C-F453FDB3DE19</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
