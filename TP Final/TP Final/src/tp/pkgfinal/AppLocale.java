@@ -5,7 +5,9 @@
  */
 
 package tp.pkgfinal;
-
+import java.sql.*;
+import java.awt.*;
+import javax.swing.*;
 /**
  *
  * @author 200666155
@@ -15,8 +17,9 @@ public class AppLocale extends javax.swing.JFrame {
     /**
      * Creates new form AppLocale
      */
-    public AppLocale() {
-        initComponents();
+    public AppLocale(ConnectionOracle conn) {
+      initComponents();
+      this.connBD = conn;
     }
 
     /**
@@ -28,23 +31,48 @@ public class AppLocale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BTN_Ajouter = new javax.swing.JButton();
-        BTN_Modifier = new javax.swing.JButton();
-        BTN_Supprimer = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BTN_AjouterArme = new javax.swing.JButton();
+        BTN_AjouterArmure = new javax.swing.JButton();
+        BTN_AjouterPotion = new javax.swing.JButton();
+        BTN_AjouterHabilite = new javax.swing.JButton();
+        BTN_ConsulUsager = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        BTN_Ajouter.setText("Ajouter Arme");
+        BTN_AjouterArme.setText("Ajouter Arme");
+        BTN_AjouterArme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterArmeActionPerformed(evt);
+            }
+        });
 
-        BTN_Modifier.setText("Ajouter Armure");
+        BTN_AjouterArmure.setText("Ajouter Armure");
+        BTN_AjouterArmure.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterArmureActionPerformed(evt);
+            }
+        });
 
-        BTN_Supprimer.setText("Ajouter Potion");
+        BTN_AjouterPotion.setText("Ajouter Potion");
+        BTN_AjouterPotion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterPotionActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Ajouter Habilité");
+        BTN_AjouterHabilite.setText("Ajouter Habilité");
+        BTN_AjouterHabilite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterHabiliteActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Augmenter le capital");
+        BTN_ConsulUsager.setText("Consulter Usager");
+        BTN_ConsulUsager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ConsulUsagerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,32 +81,56 @@ public class AppLocale extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                    .addComponent(BTN_Supprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTN_Modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTN_Ajouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(BTN_ConsulUsager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_AjouterHabilite, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(BTN_AjouterPotion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_AjouterArmure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_AjouterArme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_Ajouter)
-                    .addComponent(jButton3))
+                .addComponent(BTN_AjouterArme)
                 .addGap(18, 18, 18)
-                .addComponent(BTN_Modifier)
+                .addComponent(BTN_AjouterArmure)
                 .addGap(18, 18, 18)
-                .addComponent(BTN_Supprimer)
+                .addComponent(BTN_AjouterPotion)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(BTN_AjouterHabilite)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_ConsulUsager)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTN_AjouterArmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterArmeActionPerformed
+        // TODO add your handling code here:
+        new Arme(connBD).setVisible(true);
+    }//GEN-LAST:event_BTN_AjouterArmeActionPerformed
+
+    private void BTN_AjouterArmureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterArmureActionPerformed
+        // TODO add your handling code here:
+        new Armure(connBD).setVisible(true);
+    }//GEN-LAST:event_BTN_AjouterArmureActionPerformed
+
+    private void BTN_AjouterPotionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterPotionActionPerformed
+        // TODO add your handling code here:
+        new Potion(connBD).setVisible(true);
+    }//GEN-LAST:event_BTN_AjouterPotionActionPerformed
+
+    private void BTN_AjouterHabiliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterHabiliteActionPerformed
+        // TODO add your handling code here:
+        new Habilitées(connBD).setVisible(true);
+    }//GEN-LAST:event_BTN_AjouterHabiliteActionPerformed
+
+    private void BTN_ConsulUsagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ConsulUsagerActionPerformed
+        // TODO add your handling code here:
+        new Joueurs(connBD).setVisible(true);
+    }//GEN-LAST:event_BTN_ConsulUsagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,16 +162,17 @@ public class AppLocale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AppLocale().setVisible(true);
+                //new AppLocale().setVisible(true);
             }
         });
     }
-
+// Declaration d'une variable connBD de type ConnectionOracle
+   private ConnectionOracle connBD;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTN_Ajouter;
-    private javax.swing.JButton BTN_Modifier;
-    private javax.swing.JButton BTN_Supprimer;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton BTN_AjouterArme;
+    private javax.swing.JButton BTN_AjouterArmure;
+    private javax.swing.JButton BTN_AjouterHabilite;
+    private javax.swing.JButton BTN_AjouterPotion;
+    private javax.swing.JButton BTN_ConsulUsager;
     // End of variables declaration//GEN-END:variables
 }

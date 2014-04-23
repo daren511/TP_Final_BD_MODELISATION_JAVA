@@ -17,6 +17,8 @@ public class TPFinal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Identifier fenetrePrincipale = new Identifier();
+        fenetrePrincipale.setVisible(true);
     }
     
 }

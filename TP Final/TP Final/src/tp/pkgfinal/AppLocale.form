@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -26,14 +26,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton2" alignment="0" pref="121" max="32767" attributes="0"/>
-                  <Component id="BTN_Supprimer" alignment="0" max="32767" attributes="0"/>
-                  <Component id="BTN_Modifier" alignment="0" max="32767" attributes="0"/>
-                  <Component id="BTN_Ajouter" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BTN_ConsulUsager" max="32767" attributes="0"/>
+                  <Component id="BTN_AjouterHabilite" alignment="0" pref="121" max="32767" attributes="0"/>
+                  <Component id="BTN_AjouterPotion" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BTN_AjouterArmure" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BTN_AjouterArme" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="188" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,46 +40,60 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BTN_Ajouter" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="BTN_AjouterArme" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BTN_Modifier" min="-2" max="-2" attributes="0"/>
+              <Component id="BTN_AjouterArmure" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BTN_Supprimer" min="-2" max="-2" attributes="0"/>
+              <Component id="BTN_AjouterPotion" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <Component id="BTN_AjouterHabilite" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="BTN_ConsulUsager" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="BTN_Ajouter">
+    <Component class="javax.swing.JButton" name="BTN_AjouterArme">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter Arme"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_AjouterArmeActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Modifier">
+    <Component class="javax.swing.JButton" name="BTN_AjouterArmure">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter Armure"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_AjouterArmureActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Supprimer">
+    <Component class="javax.swing.JButton" name="BTN_AjouterPotion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter Potion"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_AjouterPotionActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="BTN_AjouterHabilite">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter Habilit&#xe9;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_AjouterHabiliteActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="BTN_ConsulUsager">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Augmenter le capital"/>
+        <Property name="text" type="java.lang.String" value="Consulter Usager"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ConsulUsagerActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
