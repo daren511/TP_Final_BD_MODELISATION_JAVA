@@ -31,7 +31,6 @@ public class AppLocale extends javax.swing.JFrame {
         BTN_Ajouter = new javax.swing.JButton();
         BTN_Modifier = new javax.swing.JButton();
         BTN_Supprimer = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -43,9 +42,7 @@ public class AppLocale extends javax.swing.JFrame {
 
         BTN_Supprimer.setText("Ajouter Potion");
 
-        jButton1.setText("Ajouter Ressource");
-
-        jButton2.setText("Ajouter Habilit");
+        jButton2.setText("Ajouter Habilité");
 
         jButton3.setText("Augmenter le capital");
 
@@ -56,8 +53,7 @@ public class AppLocale extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                     .addComponent(BTN_Supprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BTN_Modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BTN_Ajouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -76,11 +72,9 @@ public class AppLocale extends javax.swing.JFrame {
                 .addComponent(BTN_Modifier)
                 .addGap(18, 18, 18)
                 .addComponent(BTN_Supprimer)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jButton2)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,7 +119,6 @@ public class AppLocale extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Modifier;
     private javax.swing.JButton BTN_Supprimer;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables

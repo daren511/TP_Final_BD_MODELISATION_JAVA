@@ -55,15 +55,7 @@
 <colUsage columnID="B28B9E17-A319-6437-64CE-22408CD93CFF"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="FD3D189E-554F-F611-AAE1-6BB19DDBF74C" name="Armes_Items_FK">
-<createdBy>201093812</createdBy>
-<createdTime>2014-04-15 12:48:19 UTC</createdTime>
-<generatorID>Généré par l&apos;utilisateur</generatorID>
-<ownerDesignName>Modele</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-</ind_PK_UK>
-<ind_PK_UK id="06CDA886-B90E-F3CA-1B4C-7317A8FB5511" name="Armes_Items_FKv1">
+<ind_PK_UK id="06CDA886-B90E-F3CA-1B4C-7317A8FB5511" name="Armes_Items_FK">
 <createdBy>201093812</createdBy>
 <createdTime>2014-04-15 12:51:53 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>

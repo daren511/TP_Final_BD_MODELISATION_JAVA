@@ -57,15 +57,7 @@
 <colUsage columnID="B633345E-959D-D374-788F-D2C80D36AD31"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="9F9A17A7-68B5-E260-8A62-E551FCF2F060" name="Potions_Items_FK">
-<createdBy>201093812</createdBy>
-<createdTime>2014-04-15 12:50:23 UTC</createdTime>
-<generatorID>Généré par l&apos;utilisateur</generatorID>
-<ownerDesignName>Modele</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-</ind_PK_UK>
-<ind_PK_UK id="7ABD540E-4ADF-31F9-E35F-5A858C36E968" name="Potions_Items_FKv2">
+<ind_PK_UK id="7ABD540E-4ADF-31F9-E35F-5A858C36E968" name="Potions_Items_FK">
 <createdBy>201093812</createdBy>
 <createdTime>2014-04-15 12:52:33 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>

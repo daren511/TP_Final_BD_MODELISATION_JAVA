@@ -17,7 +17,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Alias" id="05EC95BA-A760-1E61-E825-80C5051FB0A6">
+<Column name="NomUsager" id="05EC95BA-A760-1E61-E825-80C5051FB0A6">
 <createdBy>201093812</createdBy>
 <createdTime>2014-04-10 13:09:02 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
@@ -65,7 +65,7 @@
 <dataTypeScale>0</dataTypeScale>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Password" id="B1E540F3-FA6C-990B-F4E3-92923F1548FE">
+<Column name="MotDePasse" id="B1E540F3-FA6C-990B-F4E3-92923F1548FE">
 <createdBy>201093812</createdBy>
 <createdTime>2014-04-10 13:10:22 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
@@ -73,6 +73,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

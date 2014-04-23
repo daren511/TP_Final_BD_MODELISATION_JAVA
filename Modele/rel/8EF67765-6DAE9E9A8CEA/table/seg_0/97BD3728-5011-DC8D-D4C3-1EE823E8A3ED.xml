@@ -28,7 +28,7 @@
 <dataTypeSize>40</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Type" id="A79EC604-1D98-ED77-53FE-EA94C42F2799">
+<Column name="Genre" id="A79EC604-1D98-ED77-53FE-EA94C42F2799">
 <createdBy>201093812</createdBy>
 <createdTime>2014-04-15 13:08:07 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
