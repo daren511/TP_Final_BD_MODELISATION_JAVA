@@ -36,6 +36,7 @@ public class AppLocale extends javax.swing.JFrame {
         BTN_AjouterPotion = new javax.swing.JButton();
         BTN_AjouterHabilite = new javax.swing.JButton();
         BTN_ConsulUsager = new javax.swing.JButton();
+        BTN_Inventaire = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -74,6 +75,13 @@ public class AppLocale extends javax.swing.JFrame {
             }
         });
 
+        BTN_Inventaire.setText("Consulter Inventaire");
+        BTN_Inventaire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_InventaireActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,13 +94,17 @@ public class AppLocale extends javax.swing.JFrame {
                     .addComponent(BTN_AjouterPotion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BTN_AjouterArmure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BTN_AjouterArme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(BTN_Inventaire)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(BTN_AjouterArme)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_AjouterArme)
+                    .addComponent(BTN_Inventaire))
                 .addGap(18, 18, 18)
                 .addComponent(BTN_AjouterArmure)
                 .addGap(18, 18, 18)
@@ -131,6 +143,11 @@ public class AppLocale extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Joueurs(connBD).setVisible(true);
     }//GEN-LAST:event_BTN_ConsulUsagerActionPerformed
+
+    private void BTN_InventaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_InventaireActionPerformed
+        // TODO add your handling code here:
+        new Inventaire(connBD).setVisible(true);
+    }//GEN-LAST:event_BTN_InventaireActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,5 +191,6 @@ public class AppLocale extends javax.swing.JFrame {
     private javax.swing.JButton BTN_AjouterHabilite;
     private javax.swing.JButton BTN_AjouterPotion;
     private javax.swing.JButton BTN_ConsulUsager;
+    private javax.swing.JButton BTN_Inventaire;
     // End of variables declaration//GEN-END:variables
 }

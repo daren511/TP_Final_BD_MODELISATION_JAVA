@@ -32,22 +32,11 @@
 <dataTypeSize>40</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Poids" id="715C048C-0528-26CA-BF22-888B4147F843">
-<createdBy>201093812</createdBy>
-<createdTime>2014-04-15 12:59:22 UTC</createdTime>
-<generatorID>Généré par l&apos;utilisateur</generatorID>
-<ownerDesignName>Modele</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="Taille" id="D3FB33F9-6964-5588-70B7-65FBF115D706">
 <createdBy>201093812</createdBy>
 <createdTime>2014-04-15 12:59:22 UTC</createdTime>
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -59,6 +48,16 @@
 <generatorID>Généré par l&apos;utilisateur</generatorID>
 <ownerDesignName>Modele</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Poids" id="98F014E7-AEEA-92A9-3428-224E7F3C9AA9">
+<createdBy>201106779</createdBy>
+<createdTime>2014-04-24 11:46:12 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

@@ -37,7 +37,6 @@
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -47,7 +46,6 @@
                           <Component id="TB_ID" alignment="0" max="32767" attributes="0"/>
                           <Component id="TB_Degats" alignment="0" pref="91" max="32767" attributes="0"/>
                           <Component id="TB_Efficacite" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TB_Poids" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -72,13 +70,13 @@
                       <Component id="BTN_Premier" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="BTN_Precedent" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="BTN_Suivant" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="BTN_Dernier" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,11 +105,6 @@
                   <Component id="TB_Quantite" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TB_Poids" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,14 +115,14 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Degats" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Premier" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Precedent" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Suivant" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Dernier" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Ajouter" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Modifier" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -238,13 +231,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_OKActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Poids"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="TB_Poids">
     </Component>
   </SubComponents>
 </Form>

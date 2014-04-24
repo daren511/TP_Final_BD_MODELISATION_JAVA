@@ -32,7 +32,9 @@
                   <Component id="BTN_AjouterArmure" alignment="0" max="32767" attributes="0"/>
                   <Component id="BTN_AjouterArme" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="188" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Component id="BTN_Inventaire" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,7 +42,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Component id="BTN_AjouterArme" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BTN_AjouterArme" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Inventaire" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="BTN_AjouterArmure" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -93,6 +98,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ConsulUsagerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTN_Inventaire">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Consulter Inventaire"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_InventaireActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
