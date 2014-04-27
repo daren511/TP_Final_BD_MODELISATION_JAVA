@@ -21,6 +21,7 @@ public class Arme extends javax.swing.JFrame {
     public Arme(ConnectionOracle conn) {
         initComponents();
         this.connBD = conn;
+        BTN_Premier.doClick();
     }
 
     /**
@@ -95,12 +96,32 @@ public class Arme extends javax.swing.JFrame {
         jLabel7.setText("Degats");
 
         BTN_Premier.setText("<<");
+        BTN_Premier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PremierActionPerformed(evt);
+            }
+        });
 
         BTN_Precedent.setText("Précédent");
+        BTN_Precedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PrecedentActionPerformed(evt);
+            }
+        });
 
         BTN_Suivant.setText("Suivant");
+        BTN_Suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SuivantActionPerformed(evt);
+            }
+        });
 
         BTN_Dernier.setText(">>");
+        BTN_Dernier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_DernierActionPerformed(evt);
+            }
+        });
 
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +255,9 @@ public class Arme extends javax.swing.JFrame {
             stminsertArmes.setInt(1, efficacite);
             stminsertArmes.setInt(2, degats);
             stminsertItems.executeUpdate();
-            stminsertArmes.executeQuery();
+            stminsertArmes.executeUpdate();
+           
+            
          }
       
       catch(SQLException se){System.out.println("err" + se);}
@@ -242,7 +265,9 @@ public class Arme extends javax.swing.JFrame {
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
         // TODO add your handling code here:
-      String sqlupdate ="update Armes set nomItem = ? ,genre=?, prix = ? , quantitedispo = ?,efficacité = ?,degats= ? where IDITEM = " + TB_ID.getText();
+      String sqlupdateArmes ="update Armes set efficacite = ?,degats= ? where IDITEM = " + TB_ID.getText();
+      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_ID.getText();
+      
       
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
@@ -254,15 +279,18 @@ public class Arme extends javax.swing.JFrame {
  
       try
          {
-            PreparedStatement stminsert= connBD.getConnection().prepareStatement(sqlupdate);
-            stminsert.setString(1, nomItem);
-            stminsert.setString(2, genre);
-            stminsert.setDouble(3, prix);
-            stminsert.setInt(4, quantite);
-            stminsert.setInt(5, efficacite);
-            stminsert.setInt(6, degats);
-            stminsert.executeUpdate();
-            stminsert.execute("commit");
+            PreparedStatement stmupdateArmes= connBD.getConnection().prepareStatement(sqlupdateArmes);
+            PreparedStatement stmupdateItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            
+            stmupdateItems.setString(1, nomItem);
+            stmupdateItems.setString(2, genre);
+            stmupdateItems.setDouble(3, prix);
+            stmupdateItems.setInt(4, quantite);
+            stmupdateArmes.setInt(1, efficacite);
+            stmupdateArmes.setInt(2, degats);
+            stmupdateItems.executeUpdate();
+            stmupdateArmes.executeUpdate();
+            
          }
       
       catch(SQLException se){System.out.println("err" + se);}
@@ -283,6 +311,108 @@ public class Arme extends javax.swing.JFrame {
             System.out.println("err" + se);
         }
     }//GEN-LAST:event_BTN_SupprimerActionPerformed
+
+    private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
+        // TODO add your handling code here:
+        try 
+     {
+         Statement stm1 = connBD.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         rst = stm1.executeQuery(sql1);
+         if (rst.first())
+         {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(5)).toString());
+            TB_Degats.setText(((Integer)rst.getInt(6)).toString());
+            
+            
+         }
+     }
+     catch(SQLException se)
+     { 
+         System.out.println(se);
+     }
+    }//GEN-LAST:event_BTN_PremierActionPerformed
+
+    private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
+        // TODO add your handling code here:
+         try 
+       {
+          if (rst.previous())
+         {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(5)).toString());
+            TB_Degats.setText(((Integer)rst.getInt(6)).toString());
+         }
+          else 
+          {
+            JOptionPane.showMessageDialog(this, "Précedent impossible");
+          }
+       
+       }
+   
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "précedent impossible");
+     }
+    }//GEN-LAST:event_BTN_PrecedentActionPerformed
+
+    private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
+        // TODO add your handling code here:
+        try 
+     {
+         if(rst.next())
+          {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(5)).toString());
+            TB_Degats.setText(((Integer)rst.getInt(6)).toString());
+          }
+         
+      
+         else 
+          {
+            JOptionPane.showMessageDialog(this, "suivant impossible");
+          }
+     }
+     
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "Suivant imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_SuivantActionPerformed
+
+    private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
+        // TODO add your handling code here:
+        try 
+      {
+         if(rst.last())
+         {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(5)).toString());
+            TB_Degats.setText(((Integer)rst.getInt(6)).toString());
+         }
+         
+
+      
+     }
+     
+     catch(SQLException se){
+        JOptionPane.showMessageDialog(this, "dernier imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_DernierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,6 +450,8 @@ public class Arme extends javax.swing.JFrame {
     }
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
+   ResultSet rst ;
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,A.efficacite,A.degats from Items I inner join Armes A on I.IDITEM=A.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
