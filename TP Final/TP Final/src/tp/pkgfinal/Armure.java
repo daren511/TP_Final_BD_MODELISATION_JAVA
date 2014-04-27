@@ -5,6 +5,9 @@
  */
 
 package tp.pkgfinal;
+import java.sql.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -18,6 +21,7 @@ public class Armure extends javax.swing.JFrame {
     public Armure(ConnectionOracle conn) {
         initComponents();
         this.connBD = conn;
+        BTN_Premier.doClick();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +48,7 @@ public class Armure extends javax.swing.JFrame {
         TB_Poids = new javax.swing.JTextField();
         TB_Taille = new javax.swing.JTextField();
         TB_Efficacite = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        L_Genre = new javax.swing.JLabel();
         BTN_Premier = new javax.swing.JButton();
         BTN_Precedent = new javax.swing.JButton();
         BTN_Suivant = new javax.swing.JButton();
@@ -80,22 +84,57 @@ public class Armure extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("ARMURES");
+        L_Genre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        L_Genre.setText("ARMURES");
 
         BTN_Premier.setText("<<");
+        BTN_Premier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PremierActionPerformed(evt);
+            }
+        });
 
         BTN_Precedent.setText("Précédent");
+        BTN_Precedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PrecedentActionPerformed(evt);
+            }
+        });
 
         BTN_Suivant.setText("Suivant");
+        BTN_Suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SuivantActionPerformed(evt);
+            }
+        });
 
         BTN_Dernier.setText(">>");
+        BTN_Dernier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_DernierActionPerformed(evt);
+            }
+        });
 
         BTN_Ajouter.setText("Ajouter");
+        BTN_Ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterActionPerformed(evt);
+            }
+        });
 
         BTN_Modifier.setText("Modifier");
+        BTN_Modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ModifierActionPerformed(evt);
+            }
+        });
 
         BTN_Supprimer.setText("Supprimer");
+        BTN_Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SupprimerActionPerformed(evt);
+            }
+        });
 
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +147,7 @@ public class Armure extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -125,69 +164,65 @@ public class Armure extends javax.swing.JFrame {
                             .addComponent(TB_ID)))
                     .addComponent(IDItem)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TB_Efficacite))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TB_Poids, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(30, 30, 30)
-                        .addComponent(TB_Taille, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(75, 75, 75))
+                        .addGap(38, 38, 38)
+                        .addComponent(TB_Taille, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TB_Poids, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TB_Efficacite, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BTN_Premier)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Precedent)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Suivant)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Dernier))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BTN_Ajouter)
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BTN_OK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BTN_Modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(42, 42, 42)
-                        .addComponent(BTN_Supprimer)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(147, 147, 147)
+                .addComponent(L_Genre))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BTN_Premier)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_Precedent)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_Suivant)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_Dernier))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BTN_Ajouter)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BTN_OK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_Modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(BTN_Supprimer))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(L_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDItem)
-                    .addComponent(jLabel6)
                     .addComponent(TB_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TB_Poids, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(TB_Taille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel7)
                     .addComponent(TB_NomItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TB_Taille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8)
+                    .addComponent(TB_Efficacite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel8)
                     .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TB_Efficacite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addComponent(TB_Poids, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -223,6 +258,211 @@ public class Armure extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BTN_OKActionPerformed
+
+    private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
+        // TODO add your handling code here:
+      String sqlajoutArmes ="insert into Armures (MATIERE,TAILLE,EFFICACITE,POIDS) values(?,?,?,?)";
+      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
+      String nomItem = TB_NomItem.getText();
+      String genre = L_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantite.getText());
+      String matiere = TB_Matiere.getText();
+      int taille = Integer.parseInt(TB_Taille.getText());
+      int efficacite = Integer.parseInt(TB_Efficacite.getText());
+      int poids = Integer.parseInt(TB_Poids.getText());
+     
+
+      try
+         {
+            PreparedStatement stminsertArmures= connBD.getConnection().prepareStatement(sqlajoutArmes);
+            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            
+            stminsertItems.setString(1, nomItem);
+            stminsertItems.setString(2, genre);
+            stminsertItems.setDouble(3, prix);
+            stminsertItems.setInt(4, quantite);
+            stminsertArmures.setString(1, matiere);
+            stminsertArmures.setInt(2, taille);
+            stminsertArmures.setInt(3,efficacite);
+            stminsertArmures.setInt(4, poids);
+            stminsertItems.executeUpdate();
+            stminsertArmures.executeUpdate();
+           
+            
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+        
+    }//GEN-LAST:event_BTN_AjouterActionPerformed
+
+    private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
+        // TODO add your handling code here:
+      String sqlupdateArmures ="update Armures set matiere = ?,taille= ?,efficacite =?, poids =? where IDITEM = " + TB_ID.getText();
+      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_ID.getText();
+      
+      String nomItem = TB_NomItem.getText();
+      String genre = L_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantite.getText());
+      String matiere = TB_Matiere.getText();
+      int taille = Integer.parseInt(TB_Taille.getText());
+      int efficacite = Integer.parseInt(TB_Efficacite.getText());
+      int poids = Integer.parseInt(TB_Poids.getText());
+     
+
+      try
+         {
+            PreparedStatement stmupdateArmures= connBD.getConnection().prepareStatement(sqlupdateArmures);
+            PreparedStatement stmupdateItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            
+            stmupdateItems.setString(1, nomItem);
+            stmupdateItems.setString(2, genre);
+            stmupdateItems.setDouble(3, prix);
+            stmupdateItems.setInt(4, quantite);
+            stmupdateArmures.setString(1, matiere);
+            stmupdateArmures.setInt(2, taille);
+            stmupdateArmures.setInt(3,efficacite);
+            stmupdateArmures.setInt(4, poids);
+            stmupdateItems.executeUpdate();
+            stmupdateArmures.executeUpdate();
+           
+            
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+    }//GEN-LAST:event_BTN_ModifierActionPerformed
+
+    private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
+        // TODO add your handling code here:
+        String sqlDeleteArmures = "DELETE FROM ARMURES WHERE IDITEM = "+TB_ID.getText();
+        String sqlDeleteItems = "DELETE FROM ITEMS WHERE IDITEM = "+TB_ID.getText();
+        
+        
+        try
+        {
+            Statement stmDelete = connBD.getConnection().createStatement();
+            stmDelete.executeQuery(sqlDeleteArmures);
+            stmDelete.executeQuery(sqlDeleteItems);
+            BTN_Premier.doClick(); 
+        }
+        catch(SQLException se)
+        {
+            System.out.println("err" + se);
+        }
+        
+    }//GEN-LAST:event_BTN_SupprimerActionPerformed
+
+    private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
+        // TODO add your handling code here:
+      try 
+     {
+         Statement stm1 = connBD.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         rst = stm1.executeQuery(sql1);
+         if (rst.first())
+         {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Matiere.setText(rst.getString(5));
+            TB_Taille.setText(((Integer)rst.getInt(6)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
+            TB_Poids.setText(((Integer)rst.getInt(8)).toString());
+            
+            
+         }
+     }
+     catch(SQLException se)
+     { 
+         System.out.println(se);
+     }
+    }//GEN-LAST:event_BTN_PremierActionPerformed
+
+    private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
+        // TODO add your handling code here:
+        try 
+       {
+          if (rst.previous())
+         {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Matiere.setText(rst.getString(5));
+            TB_Taille.setText(((Integer)rst.getInt(6)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
+            TB_Poids.setText(((Integer)rst.getInt(8)).toString());
+         }
+          else 
+          {
+            JOptionPane.showMessageDialog(this, "Précedent impossible");
+          }
+       
+       }
+   
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "précedent impossible");
+     }
+    }//GEN-LAST:event_BTN_PrecedentActionPerformed
+
+    private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
+        // TODO add your handling code here:
+        try 
+     {
+         if(rst.next())
+          {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Matiere.setText(rst.getString(5));
+            TB_Taille.setText(((Integer)rst.getInt(6)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
+            TB_Poids.setText(((Integer)rst.getInt(8)).toString());
+            
+          }
+         
+      
+         else 
+          {
+            JOptionPane.showMessageDialog(this, "suivant impossible");
+          }
+     }
+     
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "Suivant imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_SuivantActionPerformed
+
+    private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
+        // TODO add your handling code here:
+         try 
+      {
+         if(rst.last())
+         {
+            TB_ID.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Matiere.setText(rst.getString(5));
+            TB_Taille.setText(((Integer)rst.getInt(6)).toString());
+            TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
+            TB_Poids.setText(((Integer)rst.getInt(8)).toString());
+         }
+         
+
+      
+     }
+     
+     catch(SQLException se){
+        JOptionPane.showMessageDialog(this, "dernier imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_DernierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,6 +500,8 @@ public class Armure extends javax.swing.JFrame {
     }
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
+   ResultSet rst ;
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,A.matiere,A.taille,A.efficacite,A.poids from Items I inner join Armures A on I.IDITEM=A.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
@@ -270,6 +512,7 @@ public class Armure extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
     private javax.swing.JLabel IDItem;
+    private javax.swing.JLabel L_Genre;
     private javax.swing.JTextField TB_Efficacite;
     private javax.swing.JTextField TB_ID;
     private javax.swing.JTextField TB_Matiere;
@@ -278,7 +521,6 @@ public class Armure extends javax.swing.JFrame {
     private javax.swing.JTextField TB_Prix;
     private javax.swing.JTextField TB_Quantite;
     private javax.swing.JTextField TB_Taille;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

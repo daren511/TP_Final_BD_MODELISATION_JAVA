@@ -298,13 +298,16 @@ public class Arme extends javax.swing.JFrame {
 
     private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
         // TODO add your handling code here:
-        String sqlDelete = "DELETE FROM ARMES WHERE IDITEM = "+TB_ID.getText();
+        String sqlDeleteArmes = "DELETE FROM ARMES WHERE IDITEM = "+TB_ID.getText();
+        String sqlDeleteItems = "DELETE FROM ITEMS WHERE IDITEM = "+TB_ID.getText();
+        
         
         try
         {
             Statement stmDelete = connBD.getConnection().createStatement();
-            stmDelete.executeQuery(sqlDelete);
-            stmDelete.execute("commit"); 
+            stmDelete.executeQuery(sqlDeleteArmes);
+            stmDelete.executeQuery(sqlDeleteItems);
+            BTN_Premier.doClick();
         }
         catch(SQLException se)
         {

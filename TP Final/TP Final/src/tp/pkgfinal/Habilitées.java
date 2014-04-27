@@ -52,7 +52,7 @@ public class Habilitées extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Label_Genre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Label_Genre.setText("Habilites");
+        Label_Genre.setText("Habilités");
 
         jLabel2.setText("IDItem");
 
