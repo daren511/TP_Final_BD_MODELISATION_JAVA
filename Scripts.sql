@@ -25,9 +25,9 @@ CREATE TABLE Armures
   (
     IdItem     NUMBER NOT NULL ,
     Matiere    VARCHAR2 (40) NOT NULL ,
-    Poids      NUMBER NOT NULL ,
-    Taille     NUMBER ,
-    Efficacite NUMBER
+    Taille     NUMBER NOT NULL ,
+    Efficacite NUMBER ,
+    Poids      NUMBER NOT NULL
   ) ;
 ALTER TABLE Armures ADD CONSTRAINT Armure_PK PRIMARY KEY
 (
@@ -134,5 +134,10 @@ ALTER TABLE Panier ADD CONSTRAINT Panier_Joueurs_FK FOREIGN KEY ( IdJoueur ) REF
 ALTER TABLE Potions ADD CONSTRAINT Potions_Items_FK FOREIGN KEY ( IdItem ) REFERENCES Items ( IdItem ) ;
 
 ALTER TABLE Habilites ADD CONSTRAINT TABLE_7_Items_FK FOREIGN KEY ( IdItem ) REFERENCES Items ( IdItem ) ;
+
+
+
+
+
 
 

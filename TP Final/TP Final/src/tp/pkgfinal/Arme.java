@@ -41,7 +41,7 @@ public class Arme extends javax.swing.JFrame {
         BTN_Ajouter = new javax.swing.JButton();
         BTN_Modifier = new javax.swing.JButton();
         BTN_Supprimer = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        L_Genre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,13 +59,28 @@ public class Arme extends javax.swing.JFrame {
         TB_ID.setEnabled(false);
 
         BTN_Ajouter.setText("Ajouter");
+        BTN_Ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterActionPerformed(evt);
+            }
+        });
 
         BTN_Modifier.setText("Modifier");
+        BTN_Modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ModifierActionPerformed(evt);
+            }
+        });
 
         BTN_Supprimer.setText("Supprimer");
+        BTN_Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SupprimerActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("ARMES");
+        L_Genre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        L_Genre.setText("ARMES");
 
         jLabel2.setText("IDItem");
 
@@ -102,7 +117,7 @@ public class Arme extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(99, 99, 99)
-                        .addComponent(jLabel1))
+                        .addComponent(L_Genre))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -146,7 +161,7 @@ public class Arme extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addComponent(L_Genre)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -195,6 +210,80 @@ public class Arme extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BTN_OKActionPerformed
 
+    private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
+        // TODO add your handling code here:
+      String sqlajoutArmes ="insert into Armes (EFFICACITE,DEGATS) values(?,?)";
+      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
+      String nomItem = TB_NomItem.getText();
+      String genre = L_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantite.getText());
+      int efficacite = Integer.parseInt(TB_Efficacite.getText());
+      int degats = Integer.parseInt(TB_Degats.getText());
+     
+
+      try
+         {
+            PreparedStatement stminsertArmes= connBD.getConnection().prepareStatement(sqlajoutArmes);
+            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            
+            stminsertItems.setString(1, nomItem);
+            stminsertItems.setString(2, genre);
+            stminsertItems.setDouble(3, prix);
+            stminsertItems.setInt(4, quantite);
+            stminsertArmes.setInt(1, efficacite);
+            stminsertArmes.setInt(2, degats);
+            stminsertItems.executeUpdate();
+            stminsertArmes.executeQuery();
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+    }//GEN-LAST:event_BTN_AjouterActionPerformed
+
+    private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
+        // TODO add your handling code here:
+      String sqlupdate ="update Armes set nomItem = ? ,genre=?, prix = ? , quantitedispo = ?,efficacité = ?,degats= ? where IDITEM = " + TB_ID.getText();
+      
+      String nomItem = TB_NomItem.getText();
+      String genre = L_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantite.getText());
+      int efficacite = Integer.parseInt(TB_Efficacite.getText());
+      int degats = Integer.parseInt(TB_Degats.getText());
+
+ 
+      try
+         {
+            PreparedStatement stminsert= connBD.getConnection().prepareStatement(sqlupdate);
+            stminsert.setString(1, nomItem);
+            stminsert.setString(2, genre);
+            stminsert.setDouble(3, prix);
+            stminsert.setInt(4, quantite);
+            stminsert.setInt(5, efficacite);
+            stminsert.setInt(6, degats);
+            stminsert.executeUpdate();
+            stminsert.execute("commit");
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+    }//GEN-LAST:event_BTN_ModifierActionPerformed
+
+    private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
+        // TODO add your handling code here:
+        String sqlDelete = "DELETE FROM ARMES WHERE IDITEM = "+TB_ID.getText();
+        
+        try
+        {
+            Statement stmDelete = connBD.getConnection().createStatement();
+            stmDelete.executeQuery(sqlDelete);
+            stmDelete.execute("commit"); 
+        }
+        catch(SQLException se)
+        {
+            System.out.println("err" + se);
+        }
+    }//GEN-LAST:event_BTN_SupprimerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,13 +329,13 @@ public class Arme extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
+    private javax.swing.JLabel L_Genre;
     private javax.swing.JTextField TB_Degats;
     private javax.swing.JTextField TB_Efficacite;
     private javax.swing.JTextField TB_ID;
     private javax.swing.JTextField TB_NomItem;
     private javax.swing.JTextField TB_Prix;
     private javax.swing.JTextField TB_Quantite;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
