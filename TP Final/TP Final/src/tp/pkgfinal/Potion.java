@@ -55,6 +55,7 @@ public class Potion extends javax.swing.JFrame {
         BTN_Supprimer = new javax.swing.JButton();
         BTN_Ok = new javax.swing.JButton();
         BTN_Vider = new javax.swing.JButton();
+        CHK_Dispo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -138,6 +139,8 @@ public class Potion extends javax.swing.JFrame {
             }
         });
 
+        CHK_Dispo.setText("Disponible");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,7 +203,10 @@ public class Potion extends javax.swing.JFrame {
                                 .addComponent(BTN_Dernier))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
-                        .addComponent(BTN_Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BTN_Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(CHK_Dispo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -232,7 +238,9 @@ public class Potion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(TB_Duree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CHK_Dispo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(BTN_Vider)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -260,30 +268,32 @@ public class Potion extends javax.swing.JFrame {
 
     private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
         // TODO add your handling code here:
-      String sqlajoutPotion ="insert into Potions (Effet,Dureeeffet) values(?,?)";
-      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
       double prix = Double.parseDouble(TB_Prix.getText());
       int quantite = Integer.parseInt(TB_Quantité.getText());
       int duree = Integer.parseInt(TB_Duree.getText());
       String effets = TB_Effet.getText();
-      
+      int disponible=0;
+      if(CHK_Dispo.isSelected())
+      {
+          disponible = 1;
+      }
     
 
       try
          {
-            PreparedStatement stminsertPotion= connBD.getConnection().prepareStatement(sqlajoutPotion);
-            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            CallableStatement stm2 =connBD.getConnection().prepareCall("{ call GESTIONPOTIONS.INSERTION(?,?,?,?,?,?,?)}");
             
-            stminsertItems.setString(1, nomItem);
-            stminsertItems.setString(2, genre);
-            stminsertItems.setDouble(3, prix);
-            stminsertItems.setInt(4, quantite);
-            stminsertPotion.setString(1, effets);
-            stminsertPotion.setInt(2, duree);
-            stminsertItems.executeUpdate();
-            stminsertPotion.executeUpdate();
+            stm2.setString(1, nomItem);
+            stm2.setString(2, genre);
+            stm2.setDouble(3, prix);
+            stm2.setInt(4, quantite);
+            stm2.setInt(5, disponible);
+            stm2.setString(6, effets);
+            stm2.setInt(7, duree);
+            stm2.executeUpdate();
+           
  
          }
       
@@ -292,29 +302,35 @@ public class Potion extends javax.swing.JFrame {
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
         // TODO add your handling code here:
-      String sqlupdatePotions ="update Potions set dureeeffet = ?,effet= ? where IDITEM = " + TB_IDItem.getText();
-      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_IDItem.getText();
+      int iditem = Integer.parseInt(TB_IDItem.getText());
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
       double prix = Double.parseDouble(TB_Prix.getText());
       int quantite = Integer.parseInt(TB_Quantité.getText());
       int duree = Integer.parseInt(TB_Duree.getText());
       String effets = TB_Effet.getText();
+      int disponible=0;
+      if(CHK_Dispo.isSelected())
+      {
+          disponible = 1;
+      }
     
 
       try
          {
-            PreparedStatement stminsertPotion= connBD.getConnection().prepareStatement(sqlupdatePotions);
-            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            CallableStatement stm2 =connBD.getConnection().prepareCall("{ call GESTIONPOTIONS.MODIFIER(?,?,?,?,?,?,?,?)}");
             
-            stminsertItems.setString(1, nomItem);
-            stminsertItems.setString(2, genre);
-            stminsertItems.setDouble(3, prix);
-            stminsertItems.setInt(4, quantite);
-            stminsertPotion.setInt(1, duree);
-            stminsertPotion.setString(2, effets);
-            stminsertItems.executeUpdate();
-            stminsertPotion.executeUpdate();
+            stm2.setInt(1,iditem);
+            stm2.setString(2, nomItem);
+            stm2.setString(3, genre);
+            stm2.setDouble(4, prix);
+            stm2.setInt(5, quantite);
+            stm2.setInt(6, disponible);
+            stm2.setString(7, effets);
+            stm2.setInt(8, duree);
+            
+            stm2.executeUpdate();
+            
  
          }
        catch(SQLException se){System.out.println("err" + se);}
@@ -354,6 +370,12 @@ public class Potion extends javax.swing.JFrame {
             TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
             TB_Effet.setText(rst.getString(5));
             TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+            if(rst.getInt(7) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
          }
      }
      catch(SQLException se)
@@ -374,6 +396,12 @@ public class Potion extends javax.swing.JFrame {
             TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
             TB_Effet.setText(rst.getString(5));
             TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+            if(rst.getInt(7) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
          }
           else 
           {
@@ -400,6 +428,12 @@ public class Potion extends javax.swing.JFrame {
             TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
             TB_Effet.setText(rst.getString(5));
             TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+            if(rst.getInt(7) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
           }
          
       
@@ -428,6 +462,12 @@ public class Potion extends javax.swing.JFrame {
             TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
             TB_Effet.setText(rst.getString(5));
             TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+            if(rst.getInt(7) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
          }
          
 
@@ -448,6 +488,7 @@ public class Potion extends javax.swing.JFrame {
             TB_Quantité.setText("");
             TB_Effet.setText("");
             TB_Duree.setText("");
+            CHK_Dispo.setSelected(false);
     }//GEN-LAST:event_BTN_ViderActionPerformed
 
     /**
@@ -487,7 +528,7 @@ public class Potion extends javax.swing.JFrame {
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
    ResultSet rst ;
-   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,P.effet,P.dureeeffet from Items I inner join Potions P on I.IDITEM=P.IDITEM";
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,P.effet,P.dureeeffet,I.Disponible from Items I inner join Potions P on I.IDITEM=P.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
@@ -498,6 +539,7 @@ public class Potion extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
     private javax.swing.JButton BTN_Vider;
+    private javax.swing.JCheckBox CHK_Dispo;
     private javax.swing.JLabel L_Genre;
     private javax.swing.JTextField TB_Duree;
     private javax.swing.JTextField TB_Effet;
