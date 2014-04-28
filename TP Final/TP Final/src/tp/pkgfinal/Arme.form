@@ -69,9 +69,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="BTN_Premier" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="BTN_Precedent" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BTN_Suivant" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="BTN_Precedent" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="BTN_Suivant" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="BTN_Vider" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="BTN_Dernier" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -115,14 +120,16 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Degats" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="BTN_Vider" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Premier" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Precedent" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Suivant" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Dernier" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Ajouter" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Modifier" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -180,7 +187,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ARMES"/>
+        <Property name="text" type="java.lang.String" value="Armes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -251,6 +258,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_OKActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTN_Vider">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vider"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ViderActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

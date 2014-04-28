@@ -21,6 +21,7 @@ public class Potion extends javax.swing.JFrame {
     public Potion(ConnectionOracle conn) {
         initComponents();
         this.connBD = conn;
+        BTN_Premier.doClick();
     }
 
     /**
@@ -53,6 +54,7 @@ public class Potion extends javax.swing.JFrame {
         BTN_Modifier = new javax.swing.JButton();
         BTN_Supprimer = new javax.swing.JButton();
         BTN_Ok = new javax.swing.JButton();
+        BTN_Vider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,52 +131,25 @@ public class Potion extends javax.swing.JFrame {
             }
         });
 
+        BTN_Vider.setText("Vider");
+        BTN_Vider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ViderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(L_Genre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(222, 222, 222)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(BTN_Premier)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Precedent)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Suivant)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BTN_Dernier)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TB_Effet, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                                .addComponent(TB_Duree)))))
-                .addGap(23, 41, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(BTN_Ajouter)
-                                .addGap(63, 63, 63)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BTN_Modifier)
-                                    .addComponent(BTN_Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(189, 189, 189))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -188,9 +163,48 @@ public class Potion extends javax.swing.JFrame {
                                     .addGap(89, 89, 89)
                                     .addComponent(TB_NomItem, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(59, 59, 59)
-                .addComponent(BTN_Supprimer)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(L_Genre))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(BTN_Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BTN_Ajouter)
+                        .addGap(63, 63, 63)
+                        .addComponent(BTN_Modifier))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BTN_Premier)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Precedent)
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BTN_Suivant)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(BTN_Vider))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BTN_Supprimer)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TB_Effet, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                .addComponent(TB_Duree))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BTN_Dernier)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,15 +223,20 @@ public class Potion extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(TB_NomItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_Duree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(BTN_Vider)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(TB_Quantité, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Premier)
                     .addComponent(BTN_Precedent)
@@ -228,9 +247,9 @@ public class Potion extends javax.swing.JFrame {
                     .addComponent(BTN_Ajouter)
                     .addComponent(BTN_Modifier)
                     .addComponent(BTN_Supprimer))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(BTN_Ok)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -243,7 +262,7 @@ public class Potion extends javax.swing.JFrame {
 
     private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
         // TODO add your handling code here:
-      String sqlajoutPotion ="insert into Potions (EFFICACITE,DEGATS) values(?,?)";
+      String sqlajoutPotion ="insert into Potions (Effet,Dureeeffet) values(?,?)";
       String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
@@ -251,6 +270,7 @@ public class Potion extends javax.swing.JFrame {
       int quantite = Integer.parseInt(TB_Quantité.getText());
       int duree = Integer.parseInt(TB_Duree.getText());
       String effets = TB_Effet.getText();
+      
     
 
       try
@@ -262,8 +282,8 @@ public class Potion extends javax.swing.JFrame {
             stminsertItems.setString(2, genre);
             stminsertItems.setDouble(3, prix);
             stminsertItems.setInt(4, quantite);
-            stminsertPotion.setInt(1, duree);
-            stminsertPotion.setString(2, effets);
+            stminsertPotion.setString(1, effets);
+            stminsertPotion.setInt(2, duree);
             stminsertItems.executeUpdate();
             stminsertPotion.executeUpdate();
  
@@ -324,19 +344,113 @@ public class Potion extends javax.swing.JFrame {
 
     private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
         // TODO add your handling code here:
+        try 
+     {
+         Statement stm1 = connBD.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         rst = stm1.executeQuery(sql1);
+         if (rst.first())
+         {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
+            TB_Effet.setText(rst.getString(5));
+            TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+         }
+     }
+     catch(SQLException se)
+     { 
+         System.out.println(se);
+     }
     }//GEN-LAST:event_BTN_PremierActionPerformed
 
     private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
         // TODO add your handling code here:
+        try 
+       {
+          if (rst.previous())
+         {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
+            TB_Effet.setText(rst.getString(5));
+            TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+         }
+          else 
+          {
+            JOptionPane.showMessageDialog(this, "Précedent impossible");
+          }
+       
+       }
+   
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "précedent impossible");
+     }
     }//GEN-LAST:event_BTN_PrecedentActionPerformed
 
     private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
         // TODO add your handling code here:
+        try 
+     {
+         if(rst.next())
+          {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
+            TB_Effet.setText(rst.getString(5));
+            TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+          }
+         
+      
+         else 
+          {
+            JOptionPane.showMessageDialog(this, "suivant impossible");
+          }
+     }
+     
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "Suivant imposible");
+     
+     }
     }//GEN-LAST:event_BTN_SuivantActionPerformed
 
     private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
         // TODO add your handling code here:
+        try 
+      {
+         if(rst.last())
+         {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantité.setText(((Integer)rst.getInt(4)).toString());
+            TB_Effet.setText(rst.getString(5));
+            TB_Duree.setText(((Integer)rst.getInt(6)).toString());
+         }
+         
+
+      
+     }
+     
+     catch(SQLException se){
+        JOptionPane.showMessageDialog(this, "dernier imposible");
+     
+     }
     }//GEN-LAST:event_BTN_DernierActionPerformed
+
+    private void BTN_ViderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ViderActionPerformed
+        // TODO add your handling code here:
+            TB_IDItem.setText("");
+            TB_NomItem.setText("");
+            TB_Prix.setText("");
+            TB_Quantité.setText("");
+            TB_Effet.setText("");
+            TB_Duree.setText("");
+    }//GEN-LAST:event_BTN_ViderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +488,8 @@ public class Potion extends javax.swing.JFrame {
     }
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
+   ResultSet rst ;
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,P.effet,P.dureeeffet from Items I inner join Potions P on I.IDITEM=P.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
@@ -383,6 +499,7 @@ public class Potion extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
+    private javax.swing.JButton BTN_Vider;
     private javax.swing.JLabel L_Genre;
     private javax.swing.JTextField TB_Duree;
     private javax.swing.JTextField TB_Effet;

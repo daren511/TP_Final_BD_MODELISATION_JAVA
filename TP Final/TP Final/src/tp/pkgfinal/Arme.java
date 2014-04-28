@@ -54,6 +54,7 @@ public class Arme extends javax.swing.JFrame {
         BTN_Suivant = new javax.swing.JButton();
         BTN_Dernier = new javax.swing.JButton();
         BTN_OK = new javax.swing.JButton();
+        BTN_Vider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,7 +82,7 @@ public class Arme extends javax.swing.JFrame {
         });
 
         L_Genre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Genre.setText("ARMES");
+        L_Genre.setText("Armes");
 
         jLabel2.setText("IDItem");
 
@@ -130,6 +131,13 @@ public class Arme extends javax.swing.JFrame {
             }
         });
 
+        BTN_Vider.setText("Vider");
+        BTN_Vider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ViderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,9 +179,12 @@ public class Arme extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BTN_Premier)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BTN_Precedent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Suivant)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BTN_Precedent)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BTN_Suivant))
+                            .addComponent(BTN_Vider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BTN_Dernier)))
                 .addGap(0, 15, Short.MAX_VALUE))
@@ -207,13 +218,15 @@ public class Arme extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(TB_Degats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(21, 21, 21)
+                .addComponent(BTN_Vider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Premier)
                     .addComponent(BTN_Precedent)
                     .addComponent(BTN_Suivant)
                     .addComponent(BTN_Dernier))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Ajouter)
                     .addComponent(BTN_Modifier)
@@ -417,6 +430,16 @@ public class Arme extends javax.swing.JFrame {
      }
     }//GEN-LAST:event_BTN_DernierActionPerformed
 
+    private void BTN_ViderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ViderActionPerformed
+        // TODO add your handling code here:
+            TB_ID.setText("");
+            TB_NomItem.setText("");
+            TB_Prix.setText("");
+            TB_Quantite.setText("");
+            TB_Efficacite.setText("");
+            TB_Degats.setText("");
+    }//GEN-LAST:event_BTN_ViderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -464,6 +487,7 @@ public class Arme extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
+    private javax.swing.JButton BTN_Vider;
     private javax.swing.JLabel L_Genre;
     private javax.swing.JTextField TB_Degats;
     private javax.swing.JTextField TB_Efficacite;

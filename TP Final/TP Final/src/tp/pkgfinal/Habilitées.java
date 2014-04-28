@@ -21,6 +21,7 @@ public class Habilitées extends javax.swing.JFrame {
     public Habilitées(ConnectionOracle conn) {
         initComponents();
         this.connBD = conn;
+        BTN_Premier.doClick();
     }
 
     /**
@@ -51,11 +52,12 @@ public class Habilitées extends javax.swing.JFrame {
         BTN_Modifier = new javax.swing.JButton();
         BTN_Supprimer = new javax.swing.JButton();
         BTN_OK = new javax.swing.JButton();
+        BTN_Vider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Label_Genre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Label_Genre.setText("Habilités");
+        Label_Genre.setText("Habilites");
 
         jLabel2.setText("IDItem");
 
@@ -76,12 +78,32 @@ public class Habilitées extends javax.swing.JFrame {
         });
 
         BTN_Premier.setText("<<");
+        BTN_Premier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PremierActionPerformed(evt);
+            }
+        });
 
         BTN_Precedent.setText("Précédent");
+        BTN_Precedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PrecedentActionPerformed(evt);
+            }
+        });
 
         BTN_Suivant.setText("Suivant");
+        BTN_Suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SuivantActionPerformed(evt);
+            }
+        });
 
         BTN_Dernier.setText(">>");
+        BTN_Dernier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_DernierActionPerformed(evt);
+            }
+        });
 
         BTN_Ajouter.setText("Ajouter");
         BTN_Ajouter.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +130,13 @@ public class Habilitées extends javax.swing.JFrame {
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_OKActionPerformed(evt);
+            }
+        });
+
+        BTN_Vider.setText("Vider");
+        BTN_Vider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ViderActionPerformed(evt);
             }
         });
 
@@ -139,12 +168,12 @@ public class Habilitées extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(0, 9, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TB_Quantite))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(BTN_Vider, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel4)
@@ -153,17 +182,19 @@ public class Habilitées extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(32, 32, 32)
                                         .addComponent(Label_Genre))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TB_IDItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TB_NomItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TB_Prix, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(TB_Description, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(TB_NomItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TB_IDItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TB_Description)
+                                    .addComponent(TB_Quantite, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +218,11 @@ public class Habilitées extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(TB_Quantite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(TB_Description, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TB_Description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(BTN_Vider)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Premier)
@@ -201,7 +234,7 @@ public class Habilitées extends javax.swing.JFrame {
                     .addComponent(BTN_Ajouter)
                     .addComponent(BTN_Modifier)
                     .addComponent(BTN_Supprimer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(BTN_OK)
                 .addContainerGap())
         );
@@ -220,7 +253,7 @@ public class Habilitées extends javax.swing.JFrame {
 
     private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
         // TODO add your handling code here:
-      String sqlajoutSkill ="insert into Habilites (Description(values(?)";
+      String sqlajoutSkill ="insert into Habilites (Description) values(?)";
       String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
       String nomItem = TB_NomItem.getText();
       String genre =Label_Genre.getText();
@@ -298,6 +331,112 @@ public class Habilitées extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTN_SupprimerActionPerformed
 
+    private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
+        // TODO add your handling code here:
+     try 
+     {
+         Statement stm1 = connBD.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         rst = stm1.executeQuery(sql1);
+         if (rst.first())
+         {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Description.setText(rst.getString(5)); 
+         }
+     }
+     catch(SQLException se)
+     { 
+         System.out.println(se);
+     }
+    }//GEN-LAST:event_BTN_PremierActionPerformed
+
+    private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
+        // TODO add your handling code here:
+        try 
+       {
+          if (rst.previous())
+         {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Description.setText(rst.getString(5)); 
+            
+         }
+          else 
+          {
+            JOptionPane.showMessageDialog(this, "Précedent impossible");
+          }
+       
+       }
+   
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "précedent impossible");
+     }
+    }//GEN-LAST:event_BTN_PrecedentActionPerformed
+
+    private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
+        // TODO add your handling code here:
+        try 
+     {
+         if(rst.next())
+          {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Description.setText(rst.getString(5)); 
+          }
+         
+      
+         else 
+          {
+            JOptionPane.showMessageDialog(this, "suivant impossible");
+          }
+     }
+     
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "Suivant imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_SuivantActionPerformed
+
+    private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
+        // TODO add your handling code here:
+        try 
+      {
+         if(rst.last())
+         {
+            TB_IDItem.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomItem.setText(rst.getString(2));
+            TB_Prix.setText(((Double)rst.getDouble(3)).toString());
+            TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
+            TB_Description.setText(rst.getString(5)); 
+         }
+         
+
+      
+     }
+     
+     catch(SQLException se){
+        JOptionPane.showMessageDialog(this, "dernier imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_DernierActionPerformed
+
+    private void BTN_ViderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ViderActionPerformed
+        // TODO add your handling code here:
+            TB_IDItem.setText("");
+            TB_NomItem.setText("");
+            TB_Prix.setText("");
+            TB_Quantite.setText("");
+            TB_Description.setText("");
+    }//GEN-LAST:event_BTN_ViderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +473,8 @@ public class Habilitées extends javax.swing.JFrame {
     }
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
+   ResultSet rst ;
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,H.description from Items I inner join Habilites H on I.IDITEM=H.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
@@ -343,6 +484,7 @@ public class Habilitées extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
+    private javax.swing.JButton BTN_Vider;
     private javax.swing.JLabel Label_Genre;
     private javax.swing.JTextField TB_Description;
     private javax.swing.JTextField TB_IDItem;
