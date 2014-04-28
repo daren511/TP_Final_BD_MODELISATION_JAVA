@@ -5,6 +5,9 @@
  */
 
 package tp.pkgfinal;
+import java.sql.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -38,7 +41,7 @@ public class Habilitées extends javax.swing.JFrame {
         TB_IDItem = new javax.swing.JTextField();
         TB_NomItem = new javax.swing.JTextField();
         TB_Prix = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        TB_Quantite = new javax.swing.JTextField();
         TB_Description = new javax.swing.JTextField();
         BTN_Premier = new javax.swing.JButton();
         BTN_Precedent = new javax.swing.JButton();
@@ -66,9 +69,9 @@ public class Habilitées extends javax.swing.JFrame {
 
         TB_IDItem.setEnabled(false);
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        TB_Quantite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                TB_QuantiteActionPerformed(evt);
             }
         });
 
@@ -81,10 +84,25 @@ public class Habilitées extends javax.swing.JFrame {
         BTN_Dernier.setText(">>");
 
         BTN_Ajouter.setText("Ajouter");
+        BTN_Ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterActionPerformed(evt);
+            }
+        });
 
         BTN_Modifier.setText("Modifier");
+        BTN_Modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ModifierActionPerformed(evt);
+            }
+        });
 
         BTN_Supprimer.setText("Supprimer");
+        BTN_Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SupprimerActionPerformed(evt);
+            }
+        });
 
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +143,7 @@ public class Habilitées extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4))
+                                .addComponent(TB_Quantite))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -167,7 +185,7 @@ public class Habilitées extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TB_Quantite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -191,14 +209,94 @@ public class Habilitées extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void TB_QuantiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TB_QuantiteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_TB_QuantiteActionPerformed
 
     private void BTN_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OKActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BTN_OKActionPerformed
+
+    private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
+        // TODO add your handling code here:
+      String sqlajoutSkill ="insert into Habilites (Description(values(?)";
+      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
+      String nomItem = TB_NomItem.getText();
+      String genre =Label_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantite.getText());
+      String description = TB_Description.getText();
+      
+     
+
+      try
+         {
+            PreparedStatement stminsertSkill= connBD.getConnection().prepareStatement(sqlajoutSkill);
+            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            
+            stminsertItems.setString(1, nomItem);
+            stminsertItems.setString(2, genre);
+            stminsertItems.setDouble(3, prix);
+            stminsertItems.setInt(4, quantite);
+            stminsertSkill.setString(1, description);
+            
+            stminsertItems.executeUpdate();
+            stminsertSkill.executeUpdate();   
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+    }//GEN-LAST:event_BTN_AjouterActionPerformed
+
+    private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
+        // TODO add your handling code here:
+      String sqlupdateSkill ="update Habilites set description = ? where IDITEM = " + TB_IDItem.getText();
+      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_IDItem.getText();
+      
+      String nomItem = TB_NomItem.getText();
+      String genre = Label_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantite.getText());
+      String description = TB_Description.getText();
+     
+
+      try
+         {
+            PreparedStatement stmupdateSkill= connBD.getConnection().prepareStatement(sqlupdateSkill);
+            PreparedStatement stmupdateItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            
+            stmupdateItems.setString(1, nomItem);
+            stmupdateItems.setString(2, genre);
+            stmupdateItems.setDouble(3, prix);
+            stmupdateItems.setInt(4, quantite);
+            stmupdateSkill.setString(1, description);
+            
+            stmupdateItems.executeUpdate();
+            stmupdateSkill.executeUpdate();
+            
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+    }//GEN-LAST:event_BTN_ModifierActionPerformed
+
+    private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
+        // TODO add your handling code here:
+        String sqlDeleteSkill = "DELETE FROM HABILITES WHERE IDITEM = "+TB_IDItem.getText();
+        String sqlDeleteItems = "DELETE FROM ITEMS WHERE IDITEM = "+TB_IDItem.getText();
+        
+        
+        try
+        {
+            Statement stmDelete = connBD.getConnection().createStatement();
+            stmDelete.executeQuery(sqlDeleteSkill);
+            stmDelete.executeQuery(sqlDeleteItems);
+            BTN_Premier.doClick(); 
+        }
+        catch(SQLException se)
+        {
+            System.out.println("err" + se);
+        }
+    }//GEN-LAST:event_BTN_SupprimerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,11 +348,11 @@ public class Habilitées extends javax.swing.JFrame {
     private javax.swing.JTextField TB_IDItem;
     private javax.swing.JTextField TB_NomItem;
     private javax.swing.JTextField TB_Prix;
+    private javax.swing.JTextField TB_Quantite;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

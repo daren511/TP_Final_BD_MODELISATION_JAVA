@@ -33,12 +33,13 @@ public class Inventaire extends javax.swing.JFrame {
     private void initComponents() {
 
         BTN_OK = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        Radio_Armes = new javax.swing.JRadioButton();
+        Radio_Armures = new javax.swing.JRadioButton();
+        Radio_Skills = new javax.swing.JRadioButton();
+        Radio_Potions = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        Liste_Inventaire = new javax.swing.JList();
+        BTN_Lister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,15 +50,22 @@ public class Inventaire extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Armes");
+        Radio_Armes.setText("Armes");
 
-        jRadioButton2.setText("Armures");
+        Radio_Armures.setText("Armures");
 
-        jRadioButton3.setText("Habilités");
+        Radio_Skills.setText("Habilités");
 
-        jRadioButton4.setText("Potions");
+        Radio_Potions.setText("Potions");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(Liste_Inventaire);
+
+        BTN_Lister.setText("Lister");
+        BTN_Lister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ListerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,32 +76,36 @@ public class Inventaire extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton4))
+                    .addComponent(Radio_Armures, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Radio_Skills, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Radio_Armes)
+                    .addComponent(Radio_Potions))
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addGap(186, 186, 186)
-                .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BTN_OK, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(BTN_Lister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jRadioButton1)
+                .addComponent(Radio_Armes)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton2)
+                .addComponent(Radio_Armures)
                 .addGap(23, 23, 23)
-                .addComponent(jRadioButton3)
+                .addComponent(Radio_Skills)
                 .addGap(21, 21, 21)
-                .addComponent(jRadioButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Radio_Potions)
+                .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BTN_Lister)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BTN_OK)
                 .addContainerGap())
         );
@@ -105,6 +117,30 @@ public class Inventaire extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BTN_OKActionPerformed
+
+    private void BTN_ListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListerActionPerformed
+        // TODO add your handling code here:
+        String genre = " ";
+        if(Radio_Armes.isSelected()){genre =Radio_Armes.getText();}
+        else if (Radio_Armures.isSelected()){genre =Radio_Armures.getText();}
+        else if (Radio_Skills.isSelected()){genre =Radio_Skills.getText();}
+        else if (Radio_Potions.isSelected()){genre =Radio_Potions.getText();}
+        String sqllister = "Select IDITEM,NOMITEM,PRIX,QUANTITEDISPO FROM ITEMS WHERE GENRE ='"+genre+"'";
+        
+        try
+        {
+            Statement stmLister = connBD.getConnection().createStatement();
+            ResultSet rst2 = stmLister.executeQuery(sqllister);
+            DefaultListModel listModel = new DefaultListModel();
+            while(rst2.next())
+            {
+                listModel.addElement(rst2.getString(1).toString()+" "+rst2.getString(2).toString()+" "+rst2.getString(3).toString()+" "+rst2.getString(4).toString());
+            }
+            Liste_Inventaire.setModel(listModel);
+        }
+        catch(SQLException sqlex){ System.out.println(sqlex);}
+        
+    }//GEN-LAST:event_BTN_ListerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,12 +179,13 @@ public class Inventaire extends javax.swing.JFrame {
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Lister;
     private javax.swing.JButton BTN_OK;
-    private javax.swing.JList jList1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JList Liste_Inventaire;
+    private javax.swing.JRadioButton Radio_Armes;
+    private javax.swing.JRadioButton Radio_Armures;
+    private javax.swing.JRadioButton Radio_Potions;
+    private javax.swing.JRadioButton Radio_Skills;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
