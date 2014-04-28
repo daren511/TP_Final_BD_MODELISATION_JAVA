@@ -53,6 +53,7 @@ public class Habilitées extends javax.swing.JFrame {
         BTN_Supprimer = new javax.swing.JButton();
         BTN_OK = new javax.swing.JButton();
         BTN_Vider = new javax.swing.JButton();
+        CHK_Dispo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -140,6 +141,8 @@ public class Habilitées extends javax.swing.JFrame {
             }
         });
 
+        CHK_Dispo.setText("Disponible");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,51 +153,51 @@ public class Habilitées extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BTN_Premier)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BTN_Precedent)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BTN_Suivant)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BTN_Dernier))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BTN_Ajouter)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(BTN_OK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BTN_Modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Supprimer))
-                            .addComponent(jLabel7))
-                        .addGap(0, 9, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(BTN_Vider, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addComponent(Label_Genre))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(53, 53, 53)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(TB_NomItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TB_IDItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(TB_IDItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(BTN_Vider, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Label_Genre)
+                                            .addComponent(CHK_Dispo)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TB_Description)
                                     .addComponent(TB_Quantite, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BTN_Ajouter)
+                                .addGap(18, 18, 18)
+                                .addComponent(BTN_Modifier)
+                                .addGap(18, 18, 18)
+                                .addComponent(BTN_Supprimer))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BTN_Premier)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BTN_Precedent)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BTN_Suivant)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BTN_Dernier)))
+                        .addGap(0, 15, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +224,9 @@ public class Habilitées extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(TB_Description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
+                .addComponent(CHK_Dispo)
+                .addGap(17, 17, 17)
                 .addComponent(BTN_Vider)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -234,7 +239,7 @@ public class Habilitées extends javax.swing.JFrame {
                     .addComponent(BTN_Ajouter)
                     .addComponent(BTN_Modifier)
                     .addComponent(BTN_Supprimer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(BTN_OK)
                 .addContainerGap())
         );
@@ -253,29 +258,32 @@ public class Habilitées extends javax.swing.JFrame {
 
     private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
         // TODO add your handling code here:
-      String sqlajoutSkill ="insert into Habilites (Description) values(?)";
-      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
+      
       String nomItem = TB_NomItem.getText();
       String genre =Label_Genre.getText();
       double prix = Double.parseDouble(TB_Prix.getText());
       int quantite = Integer.parseInt(TB_Quantite.getText());
       String description = TB_Description.getText();
+      int disponible=0;
+      if(CHK_Dispo.isSelected())
+      {
+          disponible = 1;
+      }
       
      
 
       try
          {
-            PreparedStatement stminsertSkill= connBD.getConnection().prepareStatement(sqlajoutSkill);
-            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            CallableStatement stm1 =connBD.getConnection().prepareCall("{ call GESTIONSKILL.INSERTION(?,?,?,?,?,?)}");
             
-            stminsertItems.setString(1, nomItem);
-            stminsertItems.setString(2, genre);
-            stminsertItems.setDouble(3, prix);
-            stminsertItems.setInt(4, quantite);
-            stminsertSkill.setString(1, description);
+            stm1.setString(1, nomItem);
+            stm1.setString(2, genre);
+            stm1.setDouble(3, prix);
+            stm1.setInt(4, quantite);
+            stm1.setString(5, description);
+            stm1.setInt(6, disponible);
             
-            stminsertItems.executeUpdate();
-            stminsertSkill.executeUpdate();   
+            stm1.executeUpdate();  
          }
       
       catch(SQLException se){System.out.println("err" + se);}
@@ -283,35 +291,39 @@ public class Habilitées extends javax.swing.JFrame {
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
         // TODO add your handling code here:
-      String sqlupdateSkill ="update Habilites set description = ? where IDITEM = " + TB_IDItem.getText();
-      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_IDItem.getText();
-      
+      int iditem = Integer.parseInt(TB_IDItem.getText());
       String nomItem = TB_NomItem.getText();
       String genre = Label_Genre.getText();
       double prix = Double.parseDouble(TB_Prix.getText());
       int quantite = Integer.parseInt(TB_Quantite.getText());
       String description = TB_Description.getText();
-     
+      int disponible=0;
+      if(CHK_Dispo.isSelected())
+      {
+          disponible = 1;
+      }
+      
 
       try
          {
-            PreparedStatement stmupdateSkill= connBD.getConnection().prepareStatement(sqlupdateSkill);
-            PreparedStatement stmupdateItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+             CallableStatement stm2 =connBD.getConnection().prepareCall("{ call GESTIONSKILL.MODIFIER(?,?,?,?,?,?,?)}");
             
-            stmupdateItems.setString(1, nomItem);
-            stmupdateItems.setString(2, genre);
-            stmupdateItems.setDouble(3, prix);
-            stmupdateItems.setInt(4, quantite);
-            stmupdateSkill.setString(1, description);
+            stm2.setInt(1, iditem);
+            stm2.setString(2, nomItem);
+            stm2.setString(3, genre);
+            stm2.setDouble(4, prix);
+            stm2.setInt(5, quantite);
+            stm2.setString(6, description);
+            stm2.setInt(7, disponible);
+            stm2.executeUpdate();
             
-            stmupdateItems.executeUpdate();
-            stmupdateSkill.executeUpdate();
             
          }
       
       catch(SQLException se){System.out.println("err" + se);}
     }//GEN-LAST:event_BTN_ModifierActionPerformed
 
+    
     private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
         // TODO add your handling code here:
         String sqlDeleteSkill = "DELETE FROM HABILITES WHERE IDITEM = "+TB_IDItem.getText();
@@ -344,6 +356,12 @@ public class Habilitées extends javax.swing.JFrame {
             TB_Prix.setText(((Double)rst.getDouble(3)).toString());
             TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
             TB_Description.setText(rst.getString(5)); 
+            if(rst.getInt(6) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
          }
      }
      catch(SQLException se)
@@ -362,7 +380,13 @@ public class Habilitées extends javax.swing.JFrame {
             TB_NomItem.setText(rst.getString(2));
             TB_Prix.setText(((Double)rst.getDouble(3)).toString());
             TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
-            TB_Description.setText(rst.getString(5)); 
+            TB_Description.setText(rst.getString(5));
+            if(rst.getInt(6) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
             
          }
           else 
@@ -389,6 +413,12 @@ public class Habilitées extends javax.swing.JFrame {
             TB_Prix.setText(((Double)rst.getDouble(3)).toString());
             TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
             TB_Description.setText(rst.getString(5)); 
+            if(rst.getInt(6) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
           }
          
       
@@ -415,7 +445,13 @@ public class Habilitées extends javax.swing.JFrame {
             TB_NomItem.setText(rst.getString(2));
             TB_Prix.setText(((Double)rst.getDouble(3)).toString());
             TB_Quantite.setText(((Integer)rst.getInt(4)).toString());
-            TB_Description.setText(rst.getString(5)); 
+            TB_Description.setText(rst.getString(5));
+            if(rst.getInt(6) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+            CHK_Dispo.setSelected(false);
          }
          
 
@@ -435,6 +471,7 @@ public class Habilitées extends javax.swing.JFrame {
             TB_Prix.setText("");
             TB_Quantite.setText("");
             TB_Description.setText("");
+            CHK_Dispo.setSelected(false);
     }//GEN-LAST:event_BTN_ViderActionPerformed
 
     /**
@@ -474,7 +511,7 @@ public class Habilitées extends javax.swing.JFrame {
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
    ResultSet rst ;
-   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,H.description from Items I inner join Habilites H on I.IDITEM=H.IDITEM";
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,H.description,I.DISPONIBLE from Items I inner join Habilites H on I.IDITEM=H.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
@@ -485,6 +522,7 @@ public class Habilitées extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
     private javax.swing.JButton BTN_Vider;
+    private javax.swing.JCheckBox CHK_Dispo;
     private javax.swing.JLabel Label_Genre;
     private javax.swing.JTextField TB_Description;
     private javax.swing.JTextField TB_IDItem;

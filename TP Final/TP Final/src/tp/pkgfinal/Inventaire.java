@@ -125,19 +125,47 @@ public class Inventaire extends javax.swing.JFrame {
         
         String genre = " ";
         int NbSelection = 0;
-        if(Radio_Armes.isSelected()){
-            ++NbSelection;
-            if(genre == " "){
-             genre = Radio_Armes.getText().toString();
-            }
-        }
+        
+        if(Radio_Armes.isSelected()){++NbSelection;}
         if (Radio_Armures.isSelected()){++NbSelection;}
         if (Radio_Habilites.isSelected()){++NbSelection;}
         if (Radio_Potions.isSelected()){++NbSelection;}
+       
+            int i = 0;  
+            while (i<NbSelection)
+            {
+                if(Radio_Armes.isSelected())
+                {
+                    genre = "Genre ='"+Radio_Armes.getText().toString()+"'";
+                    ++i;
+                    if(i < NbSelection)
+                        genre += "or ";
+                }
+                if (Radio_Armures.isSelected())
+                {
+                    genre += "Genre ='"+ Radio_Armures.getText().toString() + "'";
+                    ++i;
+                    if(i < NbSelection)
+                        genre += "or ";
+                }
+                if (Radio_Habilites.isSelected())
+                {
+                    genre += "Genre ='"+ Radio_Habilites.getText().toString() + "'";
+                    ++i;
+                    if(i < NbSelection)
+                        genre += "or ";
+                }
+                if (Radio_Potions.isSelected())
+                {
+                    genre += "Genre ='"+ Radio_Potions.getText().toString() + "'";
+                    ++i;
+                }
+                
+            }
         
         
-        /*
-        String sqllister = "Select IDITEM,NOMITEM,PRIX,QUANTITEDISPO,GENRE FROM ITEMS WHERE GENRE = '"+genre+"'";
+    
+        String sqllister = "Select IDITEM,NOMITEM,PRIX,QUANTITEDISPO,GENRE FROM ITEMS WHERE " + genre;
         
         try
         {
@@ -151,7 +179,7 @@ public class Inventaire extends javax.swing.JFrame {
             Liste_Inventaire.setModel(listModel);
         }
         catch(SQLException sqlex){ System.out.println(sqlex);}
-        */
+        
         
     }//GEN-LAST:event_BTN_ListerActionPerformed
 
