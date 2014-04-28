@@ -32,7 +32,7 @@ public class Potion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        L_Genre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -56,8 +56,8 @@ public class Potion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Potions");
+        L_Genre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        L_Genre.setText("Potions");
 
         jLabel2.setText("IDItem");
 
@@ -74,18 +74,53 @@ public class Potion extends javax.swing.JFrame {
         TB_IDItem.setEnabled(false);
 
         BTN_Premier.setText("<<");
+        BTN_Premier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PremierActionPerformed(evt);
+            }
+        });
 
         BTN_Precedent.setText("Précédent");
+        BTN_Precedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PrecedentActionPerformed(evt);
+            }
+        });
 
         BTN_Suivant.setText("Suivant");
+        BTN_Suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SuivantActionPerformed(evt);
+            }
+        });
 
         BTN_Dernier.setText(">>");
+        BTN_Dernier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_DernierActionPerformed(evt);
+            }
+        });
 
         BTN_Ajouter.setText("Ajouter");
+        BTN_Ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AjouterActionPerformed(evt);
+            }
+        });
 
         BTN_Modifier.setText("Modifier");
+        BTN_Modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ModifierActionPerformed(evt);
+            }
+        });
 
         BTN_Supprimer.setText("Supprimer");
+        BTN_Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SupprimerActionPerformed(evt);
+            }
+        });
 
         BTN_Ok.setText("Ok");
         BTN_Ok.addActionListener(new java.awt.event.ActionListener() {
@@ -102,11 +137,10 @@ public class Potion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
-                        .addComponent(jLabel1))
+                        .addComponent(L_Genre))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addGap(321, 321, 321))
+                        .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -162,7 +196,7 @@ public class Potion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(L_Genre)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -206,6 +240,103 @@ public class Potion extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BTN_OkActionPerformed
+
+    private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
+        // TODO add your handling code here:
+      String sqlajoutPotion ="insert into Potions (EFFICACITE,DEGATS) values(?,?)";
+      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
+      String nomItem = TB_NomItem.getText();
+      String genre = L_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantité.getText());
+      int duree = Integer.parseInt(TB_Duree.getText());
+      String effets = TB_Effet.getText();
+    
+
+      try
+         {
+            PreparedStatement stminsertPotion= connBD.getConnection().prepareStatement(sqlajoutPotion);
+            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            
+            stminsertItems.setString(1, nomItem);
+            stminsertItems.setString(2, genre);
+            stminsertItems.setDouble(3, prix);
+            stminsertItems.setInt(4, quantite);
+            stminsertPotion.setInt(1, duree);
+            stminsertPotion.setString(2, effets);
+            stminsertItems.executeUpdate();
+            stminsertPotion.executeUpdate();
+ 
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+    }//GEN-LAST:event_BTN_AjouterActionPerformed
+
+    private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
+        // TODO add your handling code here:
+      String sqlupdatePotions ="update Potions set dureeeffet = ?,effet= ? where IDITEM = " + TB_IDItem.getText();
+      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_IDItem.getText();
+      String nomItem = TB_NomItem.getText();
+      String genre = L_Genre.getText();
+      double prix = Double.parseDouble(TB_Prix.getText());
+      int quantite = Integer.parseInt(TB_Quantité.getText());
+      int duree = Integer.parseInt(TB_Duree.getText());
+      String effets = TB_Effet.getText();
+    
+
+      try
+         {
+            PreparedStatement stminsertPotion= connBD.getConnection().prepareStatement(sqlupdatePotions);
+            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            
+            stminsertItems.setString(1, nomItem);
+            stminsertItems.setString(2, genre);
+            stminsertItems.setDouble(3, prix);
+            stminsertItems.setInt(4, quantite);
+            stminsertPotion.setInt(1, duree);
+            stminsertPotion.setString(2, effets);
+            stminsertItems.executeUpdate();
+            stminsertPotion.executeUpdate();
+ 
+         }
+       catch(SQLException se){System.out.println("err" + se);}
+      
+    }//GEN-LAST:event_BTN_ModifierActionPerformed
+
+    private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
+        // TODO add your handling code here:
+        String sqlDeleteArmes = "DELETE FROM POTIONS WHERE IDITEM = "+TB_IDItem.getText();
+        String sqlDeleteItems = "DELETE FROM ITEMS WHERE IDITEM = "+TB_IDItem.getText();
+        
+        
+        try
+        {
+            Statement stmDelete = connBD.getConnection().createStatement();
+            stmDelete.executeQuery(sqlDeleteArmes);
+            stmDelete.executeQuery(sqlDeleteItems);
+            BTN_Premier.doClick();
+        }
+        catch(SQLException se)
+        {
+            System.out.println("err" + se);
+        }
+    }//GEN-LAST:event_BTN_SupprimerActionPerformed
+
+    private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_PremierActionPerformed
+
+    private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_PrecedentActionPerformed
+
+    private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_SuivantActionPerformed
+
+    private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_DernierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,13 +383,13 @@ public class Potion extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
+    private javax.swing.JLabel L_Genre;
     private javax.swing.JTextField TB_Duree;
     private javax.swing.JTextField TB_Effet;
     private javax.swing.JTextField TB_IDItem;
     private javax.swing.JTextField TB_NomItem;
     private javax.swing.JTextField TB_Prix;
     private javax.swing.JTextField TB_Quantité;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
