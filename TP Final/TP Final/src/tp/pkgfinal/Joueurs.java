@@ -53,7 +53,7 @@ public class Joueurs extends javax.swing.JFrame {
         BTN_Dernier = new javax.swing.JButton();
         BTN_OK = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Joueurs");
@@ -85,6 +85,11 @@ public class Joueurs extends javax.swing.JFrame {
         jTextField6.setEnabled(false);
 
         BTN_MonterEcus.setText("Écus +500");
+        BTN_MonterEcus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_MonterEcusActionPerformed(evt);
+            }
+        });
 
         BTN_Premier.setText("<<");
 
@@ -207,6 +212,10 @@ public class Joueurs extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BTN_OKActionPerformed
+
+    private void BTN_MonterEcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_MonterEcusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_MonterEcusActionPerformed
 
     /**
      * @param args the command line arguments
