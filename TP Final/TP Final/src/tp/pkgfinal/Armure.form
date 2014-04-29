@@ -77,6 +77,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="TB_Poids" min="-2" pref="87" max="-2" attributes="0"/>
                                   <Component id="TB_Efficacite" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="CHK_Dispo" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -135,12 +136,13 @@
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Poids" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Quantite" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CHK_Dispo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Matiere" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -309,6 +311,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ViderActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="CHK_Dispo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
