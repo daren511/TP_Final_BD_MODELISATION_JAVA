@@ -39,13 +39,17 @@
                           <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="TB_Quantite" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TB_Prix" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TB_NomItem" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TB_ID" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TB_Degats" alignment="0" pref="91" max="32767" attributes="0"/>
-                          <Component id="TB_Efficacite" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="CHK_Dispo" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="TB_Quantite" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TB_Prix" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TB_NomItem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TB_ID" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TB_Degats" alignment="0" pref="91" max="32767" attributes="0"/>
+                              <Component id="TB_Efficacite" alignment="0" max="32767" attributes="0"/>
+                              <Component id="BTN_Vider" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -69,14 +73,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="BTN_Premier" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="BTN_Precedent" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BTN_Suivant" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="BTN_Vider" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="BTN_Precedent" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BTN_Suivant" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="BTN_Dernier" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -120,16 +119,18 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Degats" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="CHK_Dispo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Component id="BTN_Vider" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Premier" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Precedent" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Suivant" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Dernier" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Ajouter" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Modifier" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -267,6 +268,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ViderActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="CHK_Dispo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
