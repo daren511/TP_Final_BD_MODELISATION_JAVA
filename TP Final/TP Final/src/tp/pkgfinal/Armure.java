@@ -287,9 +287,6 @@ public class Armure extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_OKActionPerformed
 
     private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
-        // TODO add your handling code here:
-      String sqlajoutArmes ="insert into Armures (MATIERE,TAILLE,EFFICACITE,POIDS) values(?,?,?,?)";
-      String sqlajoutItems ="insert into Items(NOMITEM,GENRE,PRIX,QUANTITEDISPO) values(?,?,?,?)";
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
       double prix = Double.parseDouble(TB_Prix.getText());
@@ -298,36 +295,38 @@ public class Armure extends javax.swing.JFrame {
       int taille = Integer.parseInt(TB_Taille.getText());
       int efficacite = Integer.parseInt(TB_Efficacite.getText());
       int poids = Integer.parseInt(TB_Poids.getText());
+      int disponible = 0;
+      if(CHK_Dispo.isSelected())
+      {
+          disponible = 1;
+      }
      
 
       try
          {
-            PreparedStatement stminsertArmures= connBD.getConnection().prepareStatement(sqlajoutArmes);
-            PreparedStatement stminsertItems= connBD.getConnection().prepareStatement(sqlajoutItems);
+            CallableStatement stminsertArmures = connBD.getConnection().prepareCall("{ call GESTIONARMURE.INSERTION(?,?,?,?,?,?,?,?,?)}");
             
-            stminsertItems.setString(1, nomItem);
-            stminsertItems.setString(2, genre);
-            stminsertItems.setDouble(3, prix);
-            stminsertItems.setInt(4, quantite);
-            stminsertArmures.setString(1, matiere);
-            stminsertArmures.setInt(2, taille);
-            stminsertArmures.setInt(3,efficacite);
-            stminsertArmures.setInt(4, poids);
-            stminsertItems.executeUpdate();
+            stminsertArmures.setString(1, nomItem);
+            stminsertArmures.setString(2, genre);
+            stminsertArmures.setDouble(3, prix);
+            stminsertArmures.setInt(4, quantite);
+            stminsertArmures.setInt(5, disponible);
+            stminsertArmures.setString(6, matiere);
+            stminsertArmures.setInt(7, taille);
+            stminsertArmures.setInt(8,efficacite);
+            stminsertArmures.setInt(9, poids);
             stminsertArmures.executeUpdate();
-           
-            
          }
       
-      catch(SQLException se){System.out.println("err" + se);}
-        
+      catch(SQLException se){System.out.println("err" + se);}  
     }//GEN-LAST:event_BTN_AjouterActionPerformed
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
         // TODO add your handling code here:
-      String sqlupdateArmures ="update Armures set matiere = ?,taille= ?,efficacite =?, poids =? where IDITEM = " + TB_ID.getText();
-      String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_ID.getText();
+      //String sqlupdateArmures ="update Armures set matiere = ?,taille= ?,efficacite =?, poids =? where IDITEM = " + TB_ID.getText();
+      //String sqlupdateItems = "update Items set nomItem = ? ,genre=?, prix = ? , quantitedispo = ? where IDITEM = " + TB_ID.getText();
       
+      int idItem = Integer.parseInt(TB_ID.getText());
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
       double prix = Double.parseDouble(TB_Prix.getText());
@@ -336,25 +335,29 @@ public class Armure extends javax.swing.JFrame {
       int taille = Integer.parseInt(TB_Taille.getText());
       int efficacite = Integer.parseInt(TB_Efficacite.getText());
       int poids = Integer.parseInt(TB_Poids.getText());
-     
+      int disponible=0;
+      if(CHK_Dispo.isSelected())
+      {
+          disponible = 1;
+      }
 
       try
          {
-            PreparedStatement stmupdateArmures= connBD.getConnection().prepareStatement(sqlupdateArmures);
-            PreparedStatement stmupdateItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            //PreparedStatement stmupdateArmures= connBD.getConnection().prepareStatement(sqlupdateArmures);
+            //PreparedStatement stmupdateItems= connBD.getConnection().prepareStatement(sqlupdateItems);
+            CallableStatement stmupdateArmures = connBD.getConnection().prepareCall("{ call GESTIONARMURE.MODIFIER(?,?,?,?,?,?,?,?,?,?)}");
             
-            stmupdateItems.setString(1, nomItem);
-            stmupdateItems.setString(2, genre);
-            stmupdateItems.setDouble(3, prix);
-            stmupdateItems.setInt(4, quantite);
-            stmupdateArmures.setString(1, matiere);
-            stmupdateArmures.setInt(2, taille);
-            stmupdateArmures.setInt(3,efficacite);
-            stmupdateArmures.setInt(4, poids);
-            stmupdateItems.executeUpdate();
-            stmupdateArmures.executeUpdate();
-           
-            
+            stmupdateArmures.setInt(1, idItem);
+            stmupdateArmures.setString(2, nomItem);
+            stmupdateArmures.setString(3, genre);
+            stmupdateArmures.setDouble(4, prix);
+            stmupdateArmures.setInt(5, quantite);
+            stmupdateArmures.setInt(6, disponible);
+            stmupdateArmures.setString(7, matiere);
+            stmupdateArmures.setInt(8, taille);
+            stmupdateArmures.setInt(9, efficacite);
+            stmupdateArmures.setInt(10, poids);
+            stmupdateArmures.executeUpdate();  
          }
       
       catch(SQLException se){System.out.println("err" + se);}
@@ -396,8 +399,12 @@ public class Armure extends javax.swing.JFrame {
             TB_Taille.setText(((Integer)rst.getInt(6)).toString());
             TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
             TB_Poids.setText(((Integer)rst.getInt(8)).toString());
-            
-            
+            if(rst.getInt(9) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+                CHK_Dispo.setSelected(false);     
          }
      }
      catch(SQLException se)
@@ -420,6 +427,12 @@ public class Armure extends javax.swing.JFrame {
             TB_Taille.setText(((Integer)rst.getInt(6)).toString());
             TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
             TB_Poids.setText(((Integer)rst.getInt(8)).toString());
+            if(rst.getInt(9) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+                CHK_Dispo.setSelected(false);
          }
           else 
           {
@@ -439,7 +452,7 @@ public class Armure extends javax.swing.JFrame {
         try 
      {
          if(rst.next())
-          {
+         {
             TB_ID.setText (((Integer)rst.getInt(1)).toString());
             TB_NomItem.setText(rst.getString(2));
             TB_Prix.setText(((Double)rst.getDouble(3)).toString());
@@ -448,10 +461,13 @@ public class Armure extends javax.swing.JFrame {
             TB_Taille.setText(((Integer)rst.getInt(6)).toString());
             TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
             TB_Poids.setText(((Integer)rst.getInt(8)).toString());
-            
-          }
-         
-      
+            if(rst.getInt(9) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+                CHK_Dispo.setSelected(false);
+         }
          else 
           {
             JOptionPane.showMessageDialog(this, "suivant impossible");
@@ -479,15 +495,17 @@ public class Armure extends javax.swing.JFrame {
             TB_Taille.setText(((Integer)rst.getInt(6)).toString());
             TB_Efficacite.setText(((Integer)rst.getInt(7)).toString());
             TB_Poids.setText(((Integer)rst.getInt(8)).toString());
-         }
-         
-
-      
+            if(rst.getInt(9) == 1)
+            {
+                CHK_Dispo.setSelected(true);
+            }
+            else
+                CHK_Dispo.setSelected(false);
+         }    
      }
-     
-     catch(SQLException se){
+     catch(SQLException se)
+     {
         JOptionPane.showMessageDialog(this, "dernier imposible");
-     
      }
     }//GEN-LAST:event_BTN_DernierActionPerformed
 
@@ -501,7 +519,7 @@ public class Armure extends javax.swing.JFrame {
             TB_Taille.setText("");
             TB_Efficacite.setText("");
             TB_Poids.setText("");
-        
+            CHK_Dispo.setSelected(false);
     }//GEN-LAST:event_BTN_ViderActionPerformed
 
     /**
@@ -541,7 +559,7 @@ public class Armure extends javax.swing.JFrame {
 // Declaration d'une variable connBD de type ConnectionOracle
    private ConnectionOracle connBD;
    ResultSet rst ;
-   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,A.matiere,A.taille,A.efficacite,A.poids from Items I inner join Armures A on I.IDITEM=A.IDITEM";
+   String sql1 = "Select I.IDITEM,I.nomItem,I.Prix,I.QuantiteDispo,A.matiere,A.taille,A.efficacite,A.poids,I.disponible from Items I inner join Armures A on I.IDITEM=A.IDITEM";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
     private javax.swing.JButton BTN_Dernier;
