@@ -40,12 +40,12 @@ public class Joueurs extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        TB_IDJOUEUR = new javax.swing.JTextField();
+        TB_NomUsager = new javax.swing.JTextField();
+        TB_NomJoueur = new javax.swing.JTextField();
+        TB_PrenomJoueur = new javax.swing.JTextField();
+        TB_Ecus = new javax.swing.JTextField();
+        TB_MotDePasse = new javax.swing.JTextField();
         BTN_MonterEcus = new javax.swing.JButton();
         BTN_Premier = new javax.swing.JButton();
         BTN_Precedent = new javax.swing.JButton();
@@ -72,17 +72,17 @@ public class Joueurs extends javax.swing.JFrame {
 
         jLabel7.setText("Mot de Passe");
 
-        jTextField1.setEnabled(false);
+        TB_IDJOUEUR.setEnabled(false);
 
-        jTextField2.setEnabled(false);
+        TB_NomUsager.setEnabled(false);
 
-        jTextField3.setEnabled(false);
+        TB_NomJoueur.setEnabled(false);
 
-        jTextField4.setEnabled(false);
+        TB_PrenomJoueur.setEnabled(false);
 
-        jTextField5.setEnabled(false);
+        TB_Ecus.setEnabled(false);
 
-        jTextField6.setEnabled(false);
+        TB_MotDePasse.setEnabled(false);
 
         BTN_MonterEcus.setText("Écus +500");
         BTN_MonterEcus.addActionListener(new java.awt.event.ActionListener() {
@@ -92,12 +92,32 @@ public class Joueurs extends javax.swing.JFrame {
         });
 
         BTN_Premier.setText("<<");
+        BTN_Premier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PremierActionPerformed(evt);
+            }
+        });
 
         BTN_Precedent.setText("Précédent");
+        BTN_Precedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PrecedentActionPerformed(evt);
+            }
+        });
 
         BTN_Suivant.setText("Suivant");
+        BTN_Suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SuivantActionPerformed(evt);
+            }
+        });
 
         BTN_Dernier.setText(">>");
+        BTN_Dernier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_DernierActionPerformed(evt);
+            }
+        });
 
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {
@@ -122,18 +142,18 @@ public class Joueurs extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(TB_NomUsager, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TB_NomJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TB_IDJOUEUR, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField5)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField6))))
+                                    .addComponent(TB_Ecus)
+                                    .addComponent(TB_PrenomJoueur)
+                                    .addComponent(TB_MotDePasse))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -172,28 +192,28 @@ public class Joueurs extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TB_IDJOUEUR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TB_NomUsager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TB_NomJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TB_PrenomJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TB_Ecus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_MonterEcus))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TB_MotDePasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Premier)
@@ -216,6 +236,104 @@ public class Joueurs extends javax.swing.JFrame {
     private void BTN_MonterEcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_MonterEcusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_MonterEcusActionPerformed
+
+    private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
+        // TODO add your handling code here:
+        try 
+     {
+         Statement stm1 = connBD.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         rst = stm1.executeQuery(sql1);
+         if (rst.first())
+         {
+            TB_IDJOUEUR.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomUsager.setText(rst.getString(2));
+            TB_NomJoueur.setText(rst.getString(3));
+            TB_PrenomJoueur.setText(rst.getString(4));
+            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_MotDePasse.setText(rst.getString(6));
+         }
+     }
+     catch(SQLException se)
+     { 
+         System.out.println(se);
+     }
+    }//GEN-LAST:event_BTN_PremierActionPerformed
+
+    private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
+        // TODO add your handling code here:
+        try 
+       {
+          if (rst.previous())
+         {
+            TB_IDJOUEUR.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomUsager.setText(rst.getString(2));
+            TB_NomJoueur.setText(rst.getString(3));
+            TB_PrenomJoueur.setText(rst.getString(4));
+            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_MotDePasse.setText(rst.getString(6));
+         }
+          else 
+          {
+            JOptionPane.showMessageDialog(this, "Précedent impossible");
+          }
+       
+       }
+   
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "précedent impossible");
+     }
+    }//GEN-LAST:event_BTN_PrecedentActionPerformed
+
+    private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
+        // TODO add your handling code here:
+        try 
+     {
+         if(rst.next())
+          {
+            TB_IDJOUEUR.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomUsager.setText(rst.getString(2));
+            TB_NomJoueur.setText(rst.getString(3));
+            TB_PrenomJoueur.setText(rst.getString(4));
+            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_MotDePasse.setText(rst.getString(6));
+            
+          }
+         
+      
+         else 
+          {
+            JOptionPane.showMessageDialog(this, "suivant impossible");
+          }
+     }
+     
+     catch(SQLException se)
+     {
+        JOptionPane.showMessageDialog(this, "Suivant imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_SuivantActionPerformed
+
+    private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
+        // TODO add your handling code here:
+        try 
+      {
+         if(rst.last())
+         {
+            TB_IDJOUEUR.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomUsager.setText(rst.getString(2));
+            TB_NomJoueur.setText(rst.getString(3));
+            TB_PrenomJoueur.setText(rst.getString(4));
+            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_MotDePasse.setText(rst.getString(6));
+         }
+     }
+     
+     catch(SQLException se){
+        JOptionPane.showMessageDialog(this, "dernier imposible");
+     
+     }
+    }//GEN-LAST:event_BTN_DernierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +371,8 @@ public class Joueurs extends javax.swing.JFrame {
     }
     // Declaration d'une variable connBD de type ConnectionOracle
     private ConnectionOracle connBD;
+    ResultSet rst ;
+    String sql1 = "Select IDJOUEUR,NOMUSAGER,NOMJOUEUR,PRENOM,ECUSJOUEURS,MOTDEPASSE from JOUEURS";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Dernier;
     private javax.swing.JButton BTN_MonterEcus;
@@ -261,6 +381,12 @@ public class Joueurs extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JList Liste_Items;
+    private javax.swing.JTextField TB_Ecus;
+    private javax.swing.JTextField TB_IDJOUEUR;
+    private javax.swing.JTextField TB_MotDePasse;
+    private javax.swing.JTextField TB_NomJoueur;
+    private javax.swing.JTextField TB_NomUsager;
+    private javax.swing.JTextField TB_PrenomJoueur;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -269,11 +395,5 @@ public class Joueurs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

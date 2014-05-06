@@ -135,7 +135,7 @@ public class Inventaire extends javax.swing.JFrame {
             DefaultListModel listModel = new DefaultListModel();
             while(rst2.next())
             {
-                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+" "+"Nom d'item :"+rst2.getString("NOMITEM")+" "+"Prix :"+rst2.getString("Prix").toString()+" "+"Quantité :"+rst2.getString("QuantiteDispo").toString()+" "+"Genre :"+rst2.getString("Genre").toString());
+                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+"   "+"Nom d'item :"+rst2.getString("NOMITEM")+"   "+"Prix :"+rst2.getString("Prix").toString()+"   "+"Quantité :"+rst2.getString("QuantiteDispo").toString()+"   "+"Genre :"+rst2.getString("Genre").toString());
             }
             Liste_Inventaire.setModel(listModel);
         }
@@ -157,7 +157,7 @@ public class Inventaire extends javax.swing.JFrame {
             DefaultListModel listModel = new DefaultListModel();
             while(rst2.next())
             {
-                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+" "+"Nom d'item :"+rst2.getString("NOMITEM")+" "+"Genre :"+rst2.getString("Genre").toString());
+                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+"    "+"Nom d'item :"+rst2.getString("NOMITEM")+"    "+"Genre :"+rst2.getString("Genre").toString());
             }
             Liste_Inventaire.setModel(listModel);
         }
