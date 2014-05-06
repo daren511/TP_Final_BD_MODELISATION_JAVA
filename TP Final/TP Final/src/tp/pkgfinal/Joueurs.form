@@ -233,7 +233,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="BTN_MonterEcus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc9;cus +500"/>
+        <Property name="text" type="java.lang.String" value="&#xc9;cus +100"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_MonterEcusActionPerformed"/>

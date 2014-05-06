@@ -20,6 +20,7 @@ public class Joueurs extends javax.swing.JFrame {
     public Joueurs(ConnectionOracle conn) {
         initComponents();
         this.connBD=conn;
+        BTN_Premier.doClick();
     }
 
     /**
@@ -84,7 +85,7 @@ public class Joueurs extends javax.swing.JFrame {
 
         TB_MotDePasse.setEnabled(false);
 
-        BTN_MonterEcus.setText("Écus +500");
+        BTN_MonterEcus.setText("Écus +100");
         BTN_MonterEcus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_MonterEcusActionPerformed(evt);
@@ -235,6 +236,21 @@ public class Joueurs extends javax.swing.JFrame {
 
     private void BTN_MonterEcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_MonterEcusActionPerformed
         // TODO add your handling code here:
+        double ecusactuel =Double.parseDouble(TB_Ecus.getText());
+        int id =  Integer.parseInt(TB_IDJOUEUR.getText());
+        double ecusmodifie = ecusactuel + 100.00;
+        
+        try
+         {
+            CallableStatement stmaddecus = connBD.getConnection().prepareCall("{ call GESTIONJOUEURS.AJOUTECUS(?,?)}");
+            
+            stmaddecus.setInt(1, id);
+            stmaddecus.setDouble(2,ecusmodifie);
+            stmaddecus.executeUpdate();
+            connBD.getConnection().commit();
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);} 
     }//GEN-LAST:event_BTN_MonterEcusActionPerformed
 
     private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
@@ -249,7 +265,7 @@ public class Joueurs extends javax.swing.JFrame {
             TB_NomUsager.setText(rst.getString(2));
             TB_NomJoueur.setText(rst.getString(3));
             TB_PrenomJoueur.setText(rst.getString(4));
-            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_Ecus.setText(((Double)rst.getDouble(5)).toString()); 
             TB_MotDePasse.setText(rst.getString(6));
          }
      }
@@ -269,7 +285,7 @@ public class Joueurs extends javax.swing.JFrame {
             TB_NomUsager.setText(rst.getString(2));
             TB_NomJoueur.setText(rst.getString(3));
             TB_PrenomJoueur.setText(rst.getString(4));
-            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_Ecus.setText(((Double)rst.getDouble(5)).toString()); 
             TB_MotDePasse.setText(rst.getString(6));
          }
           else 
@@ -295,7 +311,7 @@ public class Joueurs extends javax.swing.JFrame {
             TB_NomUsager.setText(rst.getString(2));
             TB_NomJoueur.setText(rst.getString(3));
             TB_PrenomJoueur.setText(rst.getString(4));
-            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_Ecus.setText(((Double)rst.getDouble(5)).toString());  
             TB_MotDePasse.setText(rst.getString(6));
             
           }
@@ -324,7 +340,7 @@ public class Joueurs extends javax.swing.JFrame {
             TB_NomUsager.setText(rst.getString(2));
             TB_NomJoueur.setText(rst.getString(3));
             TB_PrenomJoueur.setText(rst.getString(4));
-            TB_Ecus.setText(((Integer)rst.getInt(5)).toString()); 
+            TB_Ecus.setText(((Double)rst.getDouble(5)).toString()); 
             TB_MotDePasse.setText(rst.getString(6));
          }
      }
