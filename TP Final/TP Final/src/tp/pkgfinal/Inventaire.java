@@ -37,7 +37,7 @@ public class Inventaire extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Liste_Inventaire = new javax.swing.JList();
         BTN_Lister = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BTN_Recherche = new javax.swing.JButton();
         TB_Recherche = new javax.swing.JTextField();
         CB_Genres = new javax.swing.JComboBox();
 
@@ -59,7 +59,12 @@ public class Inventaire extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Recherche");
+        BTN_Recherche.setText("Recherche");
+        BTN_Recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_RechercheActionPerformed(evt);
+            }
+        });
 
         CB_Genres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Armes", "Armures", "Potions", "Habilites" }));
 
@@ -85,7 +90,7 @@ public class Inventaire extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TB_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BTN_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
@@ -101,7 +106,7 @@ public class Inventaire extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Lister)
-                    .addComponent(jButton1)
+                    .addComponent(BTN_Recherche)
                     .addComponent(TB_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(BTN_OK)
@@ -138,6 +143,26 @@ public class Inventaire extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_BTN_ListerActionPerformed
+
+    private void BTN_RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RechercheActionPerformed
+        // TODO add your handling code here:
+        String champ = TB_Recherche.getText();
+        try
+        {
+            CallableStatement stm2 = connBD.getConnection().prepareCall("{? =call GESTIONINVENTAIRE.RECHERCHER(?)}");
+            stm2.registerOutParameter(1,OracleTypes.CURSOR);
+            stm2.setString(2, champ);
+            stm2.execute();
+            ResultSet rst2 = (ResultSet)stm2.getObject(1);
+            DefaultListModel listModel = new DefaultListModel();
+            while(rst2.next())
+            {
+                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+" "+"Nom d'item :"+rst2.getString("NOMITEM")+" "+"Genre :"+rst2.getString("Genre").toString());
+            }
+            Liste_Inventaire.setModel(listModel);
+        }
+        catch(SQLException sqlex){ System.out.println(sqlex);}
+    }//GEN-LAST:event_BTN_RechercheActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,10 +203,10 @@ public class Inventaire extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Lister;
     private javax.swing.JButton BTN_OK;
+    private javax.swing.JButton BTN_Recherche;
     private javax.swing.JComboBox CB_Genres;
     private javax.swing.JList Liste_Inventaire;
     private javax.swing.JTextField TB_Recherche;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
