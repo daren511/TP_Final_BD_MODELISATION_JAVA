@@ -8,6 +8,7 @@ package tp.pkgfinal;
 import java.sql.*;
 import java.awt.*;
 import javax.swing.*;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
@@ -36,10 +37,9 @@ public class Inventaire extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Liste_Inventaire = new javax.swing.JList();
         BTN_Lister = new javax.swing.JButton();
-        Radio_Armes = new javax.swing.JRadioButton();
-        Radio_Armures = new javax.swing.JRadioButton();
-        Radio_Habilites = new javax.swing.JRadioButton();
-        Radio_Potions = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        TB_Recherche = new javax.swing.JTextField();
+        CB_Genres = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,13 +59,9 @@ public class Inventaire extends javax.swing.JFrame {
             }
         });
 
-        Radio_Armes.setText("Armes");
+        jButton1.setText("Recherche");
 
-        Radio_Armures.setText("Armures");
-
-        Radio_Habilites.setText("Habilites");
-
-        Radio_Potions.setText("Potions");
+        CB_Genres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Armes", "Armures", "Potions", "Habilites" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,38 +72,38 @@ public class Inventaire extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Radio_Armures)
-                            .addComponent(Radio_Armes)
-                            .addComponent(Radio_Habilites)
-                            .addComponent(Radio_Potions)))
+                        .addGap(18, 18, 18)
+                        .addComponent(CB_Genres, 0, 90, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(186, 186, 186)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BTN_OK, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(BTN_Lister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(BTN_Lister, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TB_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Radio_Armes)
-                        .addGap(18, 18, 18)
-                        .addComponent(Radio_Armures)
-                        .addGap(18, 18, 18)
-                        .addComponent(Radio_Habilites)
-                        .addGap(18, 18, 18)
-                        .addComponent(Radio_Potions))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(CB_Genres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(BTN_Lister)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_Lister)
+                    .addComponent(jButton1)
+                    .addComponent(TB_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(BTN_OK)
                 .addContainerGap())
         );
@@ -122,60 +118,19 @@ public class Inventaire extends javax.swing.JFrame {
 
     private void BTN_ListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListerActionPerformed
         // TODO add your handling code here:
-        
-        String genre = " ";
-        int NbSelection = 0;
-        
-        if(Radio_Armes.isSelected()){++NbSelection;}
-        if (Radio_Armures.isSelected()){++NbSelection;}
-        if (Radio_Habilites.isSelected()){++NbSelection;}
-        if (Radio_Potions.isSelected()){++NbSelection;}
-       
-            int i = 0;  
-            while (i<NbSelection)
-            {
-                if(Radio_Armes.isSelected())
-                {
-                    genre = "Genre ='"+Radio_Armes.getText().toString()+"'";
-                    ++i;
-                    if(i < NbSelection)
-                        genre += "or ";
-                }
-                if (Radio_Armures.isSelected())
-                {
-                    genre += "Genre ='"+ Radio_Armures.getText().toString() + "'";
-                    ++i;
-                    if(i < NbSelection)
-                        genre += "or ";
-                }
-                if (Radio_Habilites.isSelected())
-                {
-                    genre += "Genre ='"+ Radio_Habilites.getText().toString() + "'";
-                    ++i;
-                    if(i < NbSelection)
-                        genre += "or ";
-                }
-                if (Radio_Potions.isSelected())
-                {
-                    genre += "Genre ='"+ Radio_Potions.getText().toString() + "'";
-                    ++i;
-                }
-                
-            }
-            
-        
-        
-    
-        String sqllister = "Select IDITEM,NOMITEM,PRIX,QUANTITEDISPO,GENRE FROM ITEMS WHERE " + genre;
-        
+        String genre = CB_Genres.getSelectedItem().toString();
         try
         {
-            Statement stmLister = connBD.getConnection().createStatement();
-            ResultSet rst2 = stmLister.executeQuery(sqllister);
+            
+            CallableStatement stm2 = connBD.getConnection().prepareCall("{? =call GESTIONINVENTAIRE.LISTER(?)}");
+            stm2.registerOutParameter(1,OracleTypes.CURSOR);
+            stm2.setString(2,genre);
+            stm2.execute();
+            ResultSet rst2 = (ResultSet)stm2.getObject(1);
             DefaultListModel listModel = new DefaultListModel();
             while(rst2.next())
             {
-                listModel.addElement("ID :"+rst2.getString(1).toString()+" "+"Nom d'item :"+rst2.getString(2).toString()+" "+"Prix :"+rst2.getString(3).toString()+" "+"Quantité :"+rst2.getString(4).toString()+" "+"Genre :"+rst2.getString(5).toString());
+                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+" "+"Nom d'item :"+rst2.getString("NOMITEM")+" "+"Prix :"+rst2.getString("Prix").toString()+" "+"Quantité :"+rst2.getString("QuantiteDispo").toString()+" "+"Genre :"+rst2.getString("Genre").toString());
             }
             Liste_Inventaire.setModel(listModel);
         }
@@ -223,11 +178,10 @@ public class Inventaire extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Lister;
     private javax.swing.JButton BTN_OK;
+    private javax.swing.JComboBox CB_Genres;
     private javax.swing.JList Liste_Inventaire;
-    private javax.swing.JRadioButton Radio_Armes;
-    private javax.swing.JRadioButton Radio_Armures;
-    private javax.swing.JRadioButton Radio_Habilites;
-    private javax.swing.JRadioButton Radio_Potions;
+    private javax.swing.JTextField TB_Recherche;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
