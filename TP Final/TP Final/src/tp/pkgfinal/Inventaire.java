@@ -7,6 +7,7 @@
 package tp.pkgfinal;
 import java.sql.*;
 import java.awt.*;
+import java.util.Vector;
 import javax.swing.*;
 import oracle.jdbc.OracleTypes;
 
@@ -34,12 +35,11 @@ public class Inventaire extends javax.swing.JFrame {
     private void initComponents() {
 
         BTN_OK = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Liste_Inventaire = new javax.swing.JList();
         BTN_Lister = new javax.swing.JButton();
         BTN_Recherche = new javax.swing.JButton();
         TB_Recherche = new javax.swing.JTextField();
         CB_Genres = new javax.swing.JComboBox();
+        DGV_Inventaire = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,8 +49,6 @@ public class Inventaire extends javax.swing.JFrame {
                 BTN_OKActionPerformed(evt);
             }
         });
-
-        jScrollPane1.setViewportView(Liste_Inventaire);
 
         BTN_Lister.setText("Lister");
         BTN_Lister.addActionListener(new java.awt.event.ActionListener() {
@@ -76,8 +74,8 @@ public class Inventaire extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(DGV_Inventaire, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CB_Genres, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -100,13 +98,13 @@ public class Inventaire extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(CB_Genres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BTN_Lister)))
+                        .addComponent(BTN_Lister))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(DGV_Inventaire, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TB_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,21 +124,48 @@ public class Inventaire extends javax.swing.JFrame {
 
     private void BTN_ListerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListerActionPerformed
         // TODO add your handling code here:
+      
         String genre = CB_Genres.getSelectedItem().toString();
+       // DGV_Inventaire.is
         try
         {
+            Vector vItems = new Vector();
+            Vector vLigne = null;
             
             CallableStatement stm2 = connBD.getConnection().prepareCall("{? =call GESTIONINVENTAIRE.LISTER(?)}");
             stm2.registerOutParameter(1,OracleTypes.CURSOR);
             stm2.setString(2,genre);
             stm2.execute();
             ResultSet rst2 = (ResultSet)stm2.getObject(1);
-            DefaultListModel listModel = new DefaultListModel();
             while(rst2.next())
             {
-                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+"   "+"Nom d'item :"+rst2.getString("NOMITEM")+"   "+"Prix :"+rst2.getString("Prix").toString()+"   "+"Quantité :"+rst2.getString("QuantiteDispo").toString()+"   "+"Genre :"+rst2.getString("Genre").toString());
+                vLigne = new Vector();
+                
+                vLigne.add(rst2.getInt("IDITEM"));
+                vLigne.add(rst2.getString("NOMITEM"));
+                vLigne.add(rst2.getDouble("Prix"));
+                vLigne.add(rst2.getInt("QuantiteDispo"));
+                vLigne.add(rst2.getString("Genre"));
+                
+                vItems.add(vLigne);   
             }
-            Liste_Inventaire.setModel(listModel);
+            Vector vHeader = new Vector();
+            vHeader.add("ID");
+            vHeader.add("Nom d'item");
+            vHeader.add("Prix");
+            vHeader.add("Quantité");
+            vHeader.add("Genre");
+            
+            //JTable tab = new JTable(vItems, vHeader);
+            JTable tab = new javax.swing.JTable(vItems, vHeader){
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+                }
+            };
+            
+            DGV_Inventaire.setViewportView(tab);
+            this.getContentPane().add(DGV_Inventaire, BorderLayout.CENTER);
+            DGV_Inventaire.validate(); 
         }
         catch(SQLException sqlex){ System.out.println(sqlex);}
         
@@ -152,17 +177,37 @@ public class Inventaire extends javax.swing.JFrame {
         String champ = TB_Recherche.getText();
         try
         {
+            Vector vItems = new Vector();
+            Vector vLigne = null;
+            
             CallableStatement stm2 = connBD.getConnection().prepareCall("{? =call GESTIONINVENTAIRE.RECHERCHER(?)}");
             stm2.registerOutParameter(1,OracleTypes.CURSOR);
             stm2.setString(2, champ);
             stm2.execute();
             ResultSet rst2 = (ResultSet)stm2.getObject(1);
-            DefaultListModel listModel = new DefaultListModel();
+            
             while(rst2.next())
             {
-                listModel.addElement("ID :"+rst2.getString("IDITEM").toString()+"    "+"Nom d'item :"+rst2.getString("NOMITEM")+"    "+"Genre :"+rst2.getString("Genre").toString());
+                vLigne = new Vector();
+                
+                vLigne.add(rst2.getInt("IDITEM"));
+                vLigne.add(rst2.getString("NOMITEM"));
+                vLigne.add(rst2.getString("Genre"));
+                
+                vItems.add(vLigne); 
+                
             }
-            Liste_Inventaire.setModel(listModel);
+            Vector vHeader = new Vector();
+            vHeader.add("ID");
+            vHeader.add("Nom d'item");
+            vHeader.add("Genre");
+            
+            JTable tab = new JTable(vItems, vHeader);
+            
+            DGV_Inventaire.setViewportView(tab);
+            this.getContentPane().add(DGV_Inventaire, BorderLayout.CENTER);
+            DGV_Inventaire.validate(); 
+         
         }
         catch(SQLException sqlex){ System.out.println(sqlex);}
     }//GEN-LAST:event_BTN_RechercheActionPerformed
@@ -208,8 +253,7 @@ public class Inventaire extends javax.swing.JFrame {
     private javax.swing.JButton BTN_OK;
     private javax.swing.JButton BTN_Recherche;
     private javax.swing.JComboBox CB_Genres;
-    private javax.swing.JList Liste_Inventaire;
+    private javax.swing.JScrollPane DGV_Inventaire;
     private javax.swing.JTextField TB_Recherche;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
