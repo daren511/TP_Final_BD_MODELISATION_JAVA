@@ -22,6 +22,8 @@ public class Armure extends javax.swing.JFrame {
         initComponents();
         this.connBD = conn;
         BTN_Premier.doClick();
+        
+            
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -318,7 +320,8 @@ public class Armure extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_AjouterActionPerformed
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
-
+        
+      
       int idItem = Integer.parseInt(TB_ID.getText());
       String nomItem = TB_NomItem.getText();
       String genre = L_Genre.getText();
@@ -354,7 +357,6 @@ public class Armure extends javax.swing.JFrame {
          }
       
       catch(SQLException se){System.out.println("err" + se);}
-      catch(NumberFormatException nfe){System.out.println("Veuillez remplir tout les champs avant de modifier");}
     }//GEN-LAST:event_BTN_ModifierActionPerformed
 
     private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
