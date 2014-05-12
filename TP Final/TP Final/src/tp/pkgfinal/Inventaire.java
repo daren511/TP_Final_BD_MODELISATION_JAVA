@@ -66,6 +66,8 @@ public class Inventaire extends javax.swing.JFrame {
 
         CB_Genres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Armes", "Armures", "Potions", "Habilites" }));
 
+        DGV_Inventaire.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,7 +77,7 @@ public class Inventaire extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(DGV_Inventaire, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CB_Genres, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -156,13 +158,14 @@ public class Inventaire extends javax.swing.JFrame {
             vHeader.add("Quantité");
             vHeader.add("Genre");
             
-            //JTable tab = new JTable(vItems, vHeader);
-            JTable tab = new javax.swing.JTable(vItems, vHeader){
-            public boolean isCellEditable(int rowIndex, int colIndex) {
-                return false;
-                }
-            };
             
+            JTable tab = new javax.swing.JTable(vItems, vHeader){
+                public boolean isCellEditable(int rowIndex, int colIndex) {
+                    return false;
+                }
+                
+            };
+           // tab.setSelectionBackground(Color.BLUE);
             DGV_Inventaire.setViewportView(tab);
             this.getContentPane().add(DGV_Inventaire, BorderLayout.CENTER);
             DGV_Inventaire.validate(); 
@@ -202,7 +205,13 @@ public class Inventaire extends javax.swing.JFrame {
             vHeader.add("Nom d'item");
             vHeader.add("Genre");
             
-            JTable tab = new JTable(vItems, vHeader);
+            JTable tab = new javax.swing.JTable(vItems, vHeader){
+                public boolean isCellEditable(int rowIndex, int colIndex) {
+                    return false;
+                }
+            };
+            
+            
             
             DGV_Inventaire.setViewportView(tab);
             this.getContentPane().add(DGV_Inventaire, BorderLayout.CENTER);
