@@ -50,4 +50,11 @@ div.CB
    height:30px;
    width:50px;
 }
+form#ConnUser
+{
+   font-family : inherit;
+   font-size :100%;
+   margin-left:1024px;
+   clear:both;
+}
 
