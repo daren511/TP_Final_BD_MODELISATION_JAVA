@@ -24,10 +24,23 @@ div.Inscription
    margin-right:auto;
    margin-top:300px;
    border-style:solid;
-   height:250px;
+   height:220px;
    width:420px;
    border-radius:25px;
    background-color:rgba(255,255,255,0.8);
+}
+
+table#T_Inscription,td,th,tr
+{
+   margin:0 auto;
+   text-align:center;
+   position:relative;
+   bottom:50px;
+}
+
+#Form
+{
+   text-align:center;
 }
 
 /* Catalogue.html*/
