@@ -19,24 +19,14 @@
          </form>
          <div class="CB"> 
                       <div>
-                        <label for="cb" class="CB_Arme">
-                           <input id="cb" type="checkbox" style="float: left; margin-top: 5px;"><div style="margin-left: 25px;">Arme</div>
-				            </label>
-                      
-                      <div>
-                        <label for="cb" class="CB_Armure">
-                           <input id="cb" type="checkbox" style="float: left; margin-top: 5px;"><div style="margin-left: 25px;">Armure</div>
-				            </label>
-                      </div>
-                      <div>
-                        <label for="cb" class="CB_Potion">
-                           <input id="cb" type="checkbox" style="float: left; margin-top: 5px;"><div style="margin-left: 25px;">Potion</div>
-				            </label>
-                      </div>
-                      <div>
-                        <label for="cb" class="CB_Habilite">
-                           <input id="cb" type="checkbox" style="float: left; margin-top: 5px;"><div style="margin-left: 25px;">Habilité</div>
-				            </label>
+                         <select>
+                           <option value="Tous">Tous</option>
+                           <option value="Armes">Armes</option>
+                           <option value="Armures">Armures</option>
+                           <option value="Potions">Potions</option>
+                           <option value="Habilités">Habilites</option>
+                           </select>
+                           <button id="btnfiltrer" type="submit" class="BTN_Filtrer">Filtrer Inventaire</button>
                       </div>
          </div>
          <div class="Liste">
