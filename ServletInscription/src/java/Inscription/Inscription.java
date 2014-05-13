@@ -43,7 +43,7 @@ public class Inscription extends HttpServlet {
             out.println("<body>");
             out.println("<div class=\"Inscription\">");
             out.println("<p id=\"Form\"><strong><u>Inscription</u></strong> <br/> </p>");
-            out.println("<form>");
+            out.println("<form action=\"Inscription\" method=\"POST\">");
             out.println("<table id=\"T_Inscription\">");
             
             out.println("<tr><td> Nom d'usager : </td><td> <input id=\"Username\" type=\"text\" class=\"Text_Box\" name=\"User\" /> </td></tr>");
@@ -100,8 +100,12 @@ public class Inscription extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        System.out.println("POST");
+        String username = request.getParameter("User");
+        String password = request.getParameter("Password");
+        String lastName = request.getParameter("Nom");
+        String firstName = request.getParameter("Prenom");
+        
+        
     }
 
     /**
