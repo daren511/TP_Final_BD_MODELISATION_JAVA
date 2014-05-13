@@ -55,18 +55,16 @@ div.Catalogue
    background-color:rgba(255,255,255,0.8);
 }
 
-div.CB
-{
-   margin-left:10px;
-   height:30px;
-   width:50px;
-}
 form#ConnUser
 {
    font-family : inherit;
    font-size :100%;
    margin-left:1024px;
    clear:both;
+}
+form#FiltreItem
+{
+   margin-left:10px;
 }
 table#ObjectList tr th
 {
