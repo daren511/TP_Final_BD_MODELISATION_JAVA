@@ -42,19 +42,22 @@ public class Inscription extends HttpServlet {
             ecrireTete(out,"Inscription");
             out.println("<body>");
             out.println("<div class=\"Inscription\">");
-            out.println("<pre id=\"Form\">");
-            out.println("<strong><u>Inscription</u></strong>");
+            out.println("<p id=\"Form\"><strong><u>Inscription</u></strong> <br> </p>");
+            out.println("<form>");
+            out.println("<table id=\"T_Inscription\">");
             
-            out.println("Nom d'usager : <input id=\"Username\" type=\"text\" class=\"Text_Box\" name=\"User\" />");
+            out.println("<tr><td> Nom d'usager : </td><td> <input id=\"Username\" type=\"text\" class=\"Text_Box\" name=\"User\" /> </td></tr>");
             
-            out.println("Mot de passe : <input id=\"Password\" type=\"password\" class=\"Text_Box\" name=\"Password\" />");
+            out.println("<tr><td> Mot de passe : </td><td> <input id=\"Password\" type=\"password\" class=\"Text_Box\" name=\"Password\" /> </td></tr>");
             
-            out.println("Nom : <input id=\"Name\" type=\"text\" class=\"Text_Box\" name=\"Nom\" />");
+            out.println("<tr><td> Nom : </td><td> <input id=\"Name\" type=\"text\" class=\"Text_Box\" name=\"Nom\" /> </td></tr>");
             
-            out.println("Prénom : <input id=\"firstname\" type=\"text\" class=\"Text_Box\" name=\"Prenom\" />");
+            out.println("<tr><td> Prénom : </td><td> <input id=\"firstname\" type=\"text\" class=\"Text_Box\" name=\"Prenom\" /> </td></tr>");
             
-            out.println("<button id=\"btninscription\" type=\"button\" class=\"BTN_Inscrire\">S'inscrire</button>");
-            out.println("</pre>");
+            out.println("<tr><td colspan=\"2\"> <button id=\"btninscription\" type=\"submit\" class=\"BTN_Inscrire\">S'inscrire</button> </td></tr>");
+            
+            out.println("</table>");
+            out.println("</form>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
@@ -83,6 +86,7 @@ public class Inscription extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        System.out.println("GET");
     }
 
     /**
@@ -97,6 +101,7 @@ public class Inscription extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        System.out.println("POST");
     }
 
     /**
