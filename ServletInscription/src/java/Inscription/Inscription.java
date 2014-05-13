@@ -42,7 +42,7 @@ public class Inscription extends HttpServlet {
             ecrireTete(out,"Inscription");
             out.println("<body>");
             out.println("<div class=\"Inscription\">");
-            out.println("<p id=\"Form\"><strong><u>Inscription</u></strong> <br> </p>");
+            out.println("<p id=\"Form\"><strong><u>Inscription</u></strong> <br/> </p>");
             out.println("<form>");
             out.println("<table id=\"T_Inscription\">");
             
