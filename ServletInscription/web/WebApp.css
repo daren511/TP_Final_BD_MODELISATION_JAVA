@@ -16,6 +16,15 @@ input.Text_Box
    border-radius:25px;
 }
 
+.bon
+{
+   color:green;
+}
+
+.mauvais
+{
+   color:red;
+}
 
 div.Inscription
 {
@@ -24,7 +33,7 @@ div.Inscription
    margin-right:auto;
    margin-top:300px;
    border-style:solid;
-   height:220px;
+   height:250px;
    width:420px;
    border-radius:25px;
    background-color:rgba(255,255,255,0.8);
