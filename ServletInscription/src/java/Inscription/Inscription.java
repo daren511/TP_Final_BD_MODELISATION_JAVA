@@ -104,7 +104,9 @@ public class Inscription extends HttpServlet {
         String password = request.getParameter("Password");
         String lastName = request.getParameter("Nom");
         String firstName = request.getParameter("Prenom");
+        ConnectionOracle conn = new ConnectionOracle();
         
+        conn.connecter();
         
     }
 
