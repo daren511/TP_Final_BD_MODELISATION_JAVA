@@ -284,6 +284,7 @@ public class Habilitées extends javax.swing.JFrame {
             stm1.setInt(6, disponible);
             
             stm1.executeUpdate();  
+            BTN_Premier.doClick();
          }
       
       catch(SQLException se){System.out.println("err" + se);}
@@ -316,6 +317,7 @@ public class Habilitées extends javax.swing.JFrame {
             stm2.setString(6, description);
             stm2.setInt(7, disponible);
             stm2.executeUpdate();
+            BTN_Premier.doClick();
             
             
          }

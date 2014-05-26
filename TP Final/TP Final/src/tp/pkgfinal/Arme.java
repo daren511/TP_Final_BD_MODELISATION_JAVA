@@ -274,6 +274,7 @@ public class Arme extends javax.swing.JFrame {
             stminsertArmes.setInt(6, efficacite);
             stminsertArmes.setInt(7, degats);
             stminsertArmes.executeUpdate();
+            BTN_Premier.doClick();
         }
         
         catch(SQLException se){System.out.println("err" + se);}
@@ -311,6 +312,7 @@ public class Arme extends javax.swing.JFrame {
             stmupdateItems.setInt(7, efficacite);
             stmupdateItems.setInt(8, degats);
             stmupdateItems.executeUpdate();
+            BTN_Premier.doClick();
         }
         
         catch(SQLException se){System.out.println("err" + se);}

@@ -293,6 +293,7 @@ public class Potion extends javax.swing.JFrame {
             stm2.setString(6, effets);
             stm2.setInt(7, duree);
             stm2.executeUpdate();
+            BTN_Premier.doClick();
            
  
          }
@@ -330,6 +331,7 @@ public class Potion extends javax.swing.JFrame {
             stm2.setInt(8, duree);
             
             stm2.executeUpdate();
+            BTN_Premier.doClick();
             
  
          }
