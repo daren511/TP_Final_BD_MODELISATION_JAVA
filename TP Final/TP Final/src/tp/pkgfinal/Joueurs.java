@@ -45,7 +45,7 @@ public class Joueurs extends javax.swing.JFrame {
                 
                 vLigne.add(rst2.getString("NOMITEM"));
                 vLigne.add(rst2.getString("GENRE"));
-                vLigne.add(rst2.getInt("QuantiteDispo"));
+                vLigne.add(rst2.getInt("Quantite"));
                 vItems.add(vLigne);   
             }
             Vector vHeader = new Vector();
